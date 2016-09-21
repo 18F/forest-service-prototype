@@ -1,0 +1,79 @@
+---
+name: forest-service-special-use-permit-prototype
+full_name: Forest Service Special Use Permit Prototype
+description: A prototype for forest service special use non-commerical group use permits.
+impact: Low.
+owner_type: project
+stage: discovery
+testable: true
+
+licenses:
+  dj-database-url:
+    name: BSD-3-Clause
+    url: http://opensource.org/licenses/BSD-3-Clause
+  Django:
+    name: BSD-3-Clause
+    url: http://opensource.org/licenses/BSD-3-Clause
+  django-enumfields:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  django-floppyforms:
+    name: BSD licence, see LICENSE file
+    url: FIXME
+  python-markdown:
+    name: BSD-3-Clause
+    url: http://opensource.org/licenses/BSD-3-Clause
+  psycopg2:
+    name: LGPL-3.0
+    url: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
+  six:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  virtualenv:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  WebOb:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  whitenoise:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  wsgi-basic-auth:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  requests:
+    name: Apache-2.0
+    url: https://opensource.org/licenses/Apache-2.0
+
+partners:
+- 18f
+
+team:
+- github: lauraGgit
+  id: Laura Gerhardt
+  role: Lead
+- github: fureigh
+  id: Fureigh
+  role: Dev
+- github: stvnrlly
+  id: Steven Reilly
+  role: Dev
+
+
+type: app
+
+links:
+- url: https://no.site.yet.example.com/
+  text: Forest Service Prototype
+
+blogTag:
+  - ePermits
+  - forest service
+
+tags:
+  - ePermits
+  - forest service
+
+stack:
+- Django
+- PostgreSQL

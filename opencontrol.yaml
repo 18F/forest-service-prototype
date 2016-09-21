@@ -1,0 +1,11 @@
+schema_version: "1.0.0"
+name: forest-service-prototype
+metadata:
+  description: "A prototype for forest service special use non-commerical group use permits."
+  maintainers:
+    - laura.gerhardt@gsa.gov
+components:
+dependencies:
+  systems:
+    - url: https://github.com/18F/cg-compliance
+      revision: master

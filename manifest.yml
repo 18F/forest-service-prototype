@@ -1,0 +1,4 @@
+---
+buildpack: python_buildpack
+applications:
+- name: forest-service-prototype
