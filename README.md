@@ -1,5 +1,5 @@
 # Forest Service Prototype
-This is a Django application to test out for an online permit of the non-commerical group use Forest Service Permit.
+This is a Django application to test out an online permit of the non-commerical group use Forest Service Permit.
 
 ## Local Installation
 
