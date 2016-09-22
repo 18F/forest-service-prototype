@@ -15,3 +15,9 @@ def submit(request):
 
 def submitted_permit(request):
     return render(request, "specialuseform/submitted_permit.html")
+
+def applications(request):
+    permits = Permit.objects.all()
+    return render(request, "specialuseform/applications.html", {
+        'permits': permits
+        })

@@ -1,0 +1,10 @@
+{% extends "specialuseform/base.html" %}
+
+{% block content %}
+  <h1>Applications</h1>
+  {% for permit in permits %}
+  <p class="usa-font-lead">
+    {{ permit.event_name }}
+  </p>
+  {% endfor %}
+{% endblock content %}
