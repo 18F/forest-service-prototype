@@ -8,8 +8,8 @@ class PermitForm(forms.ModelForm):
         model = Permit
         fields = ['event_name', 'organizer_address_1', 'organizer_address_2', 'city', 'state', 'zipcode', 'phone_daytime', 'phone_evening', 'description', 'location', 'participant_number', 'spectator_number', 'start_date', 'end_date', 'permit_holder_name', 'permit_holder_signature']
         widgets = {
-            'start_date': forms.SelectDateWidget,
-            'end_date': forms.SelectDateWidget,
+#            'start_date': forms.SelectDateWidget,
+#            'end_date': forms.SelectDateWidget,
             'phone_daytime': forms.PhoneNumberInput,
             'phone_evening': forms.PhoneNumberInput
         }
