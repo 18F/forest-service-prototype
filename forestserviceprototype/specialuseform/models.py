@@ -11,7 +11,8 @@ class Permit(models.Model):
         ('in_review', 'In Review'),
         ('not_approved', 'Not Approved')
     )
-    event_name = models.CharField(max_length=250)
+    event_name = models.CharField(max_length=250,
+        help_text='The name of the event')
     organizer_address_1 = models.CharField(max_length=250)
     organizer_address_2 = models.CharField(max_length=250)
     city = models.CharField(max_length=250)
@@ -23,9 +24,10 @@ class Permit(models.Model):
     location = models.CharField(max_length=250)
     participant_number = models.IntegerField()
     spectator_number = models.IntegerField(blank=True)
-    start_date = models.DateTimeField(default=timezone.now)
-    end_date = models.DateTimeField(default=timezone.now)
-    organizer_name = models.CharField(max_length=250)
+    start_date = models.DateTimeField(default=timezone.now, help_text='For example: 04 28 1986')
+    end_date = models.DateTimeField(default=timezone.now, help_text='For example: 04 28 1986')
+    permit_holder_name = models.CharField(max_length=250, help_text='Name of Permit Holder', default='Permit Holder')
+    permit_holder_signature = models.ImageField(blank=True)
     created = models.DateTimeField(default=timezone.now)
     updated = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=100,

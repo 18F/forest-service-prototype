@@ -12,15 +12,15 @@
         <label for="{{ field|id }}" {% if field.errors %}class="usa-input-error-label"{% endif %}>
           {{ field.label }}:
         </label>
+        {% if field.help_text %}<div class="help-text usa-form-hint">{{ field.help_text }}</div>{% endif %}
         {% for error in field.errors %}
           <span class="usa-input-error-message" role="alert">{{ error }}</span>
         {% endfor %}
         {% widget field %}
-        {% if field.help_text %}<div class="help-text">{{ field.help_text }}</div>{% endif %}
       {% if field.errors %}</div>{% endif %}
     {% endfor %}
     <div class="button_wrapper">
-      <button class="usa-button-big" type="submit">Default</button>
+      <button class="usa-button-big" type="submit">Submit Your Application</button>
     </div>
   </form>
 {% endblock content %}
