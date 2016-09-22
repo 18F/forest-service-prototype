@@ -9,8 +9,8 @@ def submit(request):
     form = PermitForm(request.POST or None)
     if form.is_valid():
         permit = form.save()
-        send_report_notification(request, permit)
-        return redirect(thanks)
+        # send_report_notification(request, permit)
+        return redirect(submitted_permit)
     return render(request, "specialuseform/submit.html", {'form': form})
 
 def submitted_permit(request):

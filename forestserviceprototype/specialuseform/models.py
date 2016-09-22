@@ -28,7 +28,7 @@ class Permit(models.Model):
     organizer_name = models.CharField(max_length=250)
     created = models.DateTimeField(default=timezone.now)
     updated = models.DateTimeField(default=timezone.now)
-    status = models.CharField(max_length=10,
+    status = models.CharField(max_length=100,
                               choices=STATUS_CHOICES,
                               default='needs_approval')
 
