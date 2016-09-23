@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .forms import PermitForm
@@ -16,6 +17,8 @@ def submit(request):
 def submitted_permit(request):
     return render(request, "specialuseform/submitted_permit.html")
 
+# @todo: Fix redirect so users don't get stuck in admin screen. See #7.
+@login_required(login_url='/admin/')
 def applications(request):
     permits = Permit.objects.all()
     return render(request, "specialuseform/applications.html", {
