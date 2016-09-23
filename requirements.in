@@ -7,3 +7,5 @@ django-floppyforms
 markdown
 wsgi-basic-auth
 requests
+pytz
+django-localflavor
