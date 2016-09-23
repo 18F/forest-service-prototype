@@ -1,8 +1,22 @@
 {% extends "specialuseform/base.html" %}
 
 {% block content %}
-  <h1>Thank you!</h1>
+  <h1>Application Submitted</h1>
   <p class="usa-font-lead">
-    We've got it! We'll be in touch.
+    Application #{{ permit.permit_id }}: {{ permit.event_name }}
   </p>
+
+  <p> Permit Status: {{ permit.status}}</p>
+
+  <p>You will recieve an email notification from the Forest Service in a few days about whether your permit has been approved.
+    Please review your information to make sure it is correct.</p>
+  <button> Edit Permit Information</button>
+  <table>
+    {% for value in permit.items %}
+      <tr>
+          <th scope="col">{{ key }}</th><th scope="row">{{ value }}</th>
+      </tr>
+    {% endfor %}
+  </table>
+
 {% endblock content %}

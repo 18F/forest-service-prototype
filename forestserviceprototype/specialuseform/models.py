@@ -11,6 +11,7 @@ class Permit(models.Model):
         ('in_review', 'In Review'),
         ('not_approved', 'Not Approved')
     )
+    permit_id = models.AutoField(primary_key=True, default=0)
     event_name = models.CharField(max_length=250,
         help_text='The name of the event')
     organizer_address_1 = models.CharField(max_length=250)
@@ -18,6 +19,7 @@ class Permit(models.Model):
     city = models.CharField(max_length=250)
     state = localflavor.USStateField(default="OH")
     zipcode = localflavor.USZipCodeField()
+    email = models.EmailField(blank=True)
     phone_daytime = localflavor.PhoneNumberField()
     phone_evening = localflavor.PhoneNumberField(blank=True)
     description = models.TextField()
