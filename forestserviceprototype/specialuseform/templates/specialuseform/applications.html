@@ -2,9 +2,28 @@
 
 {% block content %}
   <h1>Applications</h1>
-  {% for permit in permits %}
-  <p class="usa-font-lead">
-    {{ permit.event_name }}
-  </p>
-  {% endfor %}
+  {% if permits %}
+      <table>
+        <thead>
+            <tr>
+                <th scope="col">Event name</th>
+                <th scope="col">Location</th>
+                <th scope="col">Start date</th>
+                <th scope="col">End date</th>
+                <th scope="col">Created</th>
+                <th scope="col">Status</th>
+            <tr>
+        </thead>
+      {% for permit in permits %}
+        <tr>
+            <th scope="row">{{ permit.event_name }}</th>
+            <td>{{ permit.location }}</td>
+            <td>{{ permit.start_date }}</td>
+            <td>{{ permit.end_date }}</td>
+            <td>{{ permit.created }}</td>
+            <td>{{ permit.status }}</td>
+        </tr>
+      {% endfor %}
+      </table>
+  {% endif %}
 {% endblock content %}
