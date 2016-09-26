@@ -9,7 +9,7 @@ class Permit(models.Model):
         ('needs_approval', 'Needs Approval'),
         ('approved', 'Approved'),
         ('in_review', 'In Review'),
-        ('not_approved', 'Not Approved')
+        ('not_approved', 'Rejected')
     )
     event_name = models.CharField(max_length=250,
         help_text='The name of the event')
