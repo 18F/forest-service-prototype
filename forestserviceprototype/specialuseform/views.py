@@ -17,6 +17,12 @@ def submit(request):
 def submitted_permit(request):
     return render(request, "specialuseform/submitted_permit.html")
 
+def permit(request, permit_id):
+    permit = get_object_or_404(Permit.objects.filter(id=permit_id))
+    return render(request, "specialuseform/permit.html", {
+        'permit': permit
+        })
+
 # @todo: Fix redirect so users don't get stuck in admin screen. See #7.
 @login_required(login_url='/admin/')
 def applications(request):
