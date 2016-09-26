@@ -12,9 +12,9 @@
     Please review your information to make sure it is correct.</p>
   <button> Edit Permit Information</button>
   <table>
-    {% for value in permit.items %}
+    {% for field in permit_dict %}
       <tr>
-          <th scope="col">{{ key }}</th><th scope="row">{{ value }}</th>
+          <th scope="col">{{ field.label }}</th><th scope="row">{{ field.data }}</th>
       </tr>
     {% endfor %}
   </table>
