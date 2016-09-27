@@ -12,13 +12,13 @@ class Permit(models.Model):
         ('not_approved', 'Rejected'),
         ('user_cancelled', "User Cancelled")
     )
-    permit_id = models.AutoField(primary_key=True, default=0)
+    permit_id = models.AutoField(primary_key=True)
     event_name = models.CharField(max_length=250,
         help_text='The name of the event')
     organizer_address_1 = models.CharField(max_length=250)
-    organizer_address_2 = models.CharField(max_length=250)
+    organizer_address_2 = models.CharField(max_length=250, blank=True)
     city = models.CharField(max_length=250)
-    state = localflavor.USStateField(default="OH")
+    state = localflavor.USStateField()
     zipcode = localflavor.USZipCodeField()
     email = models.EmailField(blank=True)
     phone_daytime = localflavor.PhoneNumberField()

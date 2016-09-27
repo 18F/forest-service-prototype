@@ -12,13 +12,4 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='permit',
-            name='id',
-        ),
-        migrations.AddField(
-            model_name='permit',
-            name='permit_id',
-            field=models.AutoField(primary_key=True, serialize=False),
-        ),
     ]

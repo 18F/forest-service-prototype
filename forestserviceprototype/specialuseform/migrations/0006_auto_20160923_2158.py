@@ -17,9 +17,4 @@ class Migration(migrations.Migration):
             name='email',
             field=models.EmailField(blank=True, max_length=254),
         ),
-        migrations.AlterField(
-            model_name='permit',
-            name='permit_id',
-            field=models.AutoField(default=0, primary_key=True, serialize=False),
-        ),
     ]
