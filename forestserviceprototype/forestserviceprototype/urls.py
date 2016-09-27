@@ -20,7 +20,9 @@ from specialuseform import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^submit/$', views.submit, name="submit"),
+    url(r'^submit/$', views.submit, {}, name="submit"),
+    url(r'^edit/(?P<permit_id>\d*)$', views.submit, {}, name="edit"),
     url(r'^submitted/(?P<permit_id>\d*)$', views.submitted_permit, name="submitted_permit"),
+    url(r'^cancel/(?P<permit_id>\d*)$', views.cancel, name="cancel"),
     url(r'^applications/', views.applications, name="applications"),
 ]

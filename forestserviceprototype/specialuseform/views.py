@@ -10,13 +10,33 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def submit(request):
-    form = PermitForm(request.POST or None)
-    if form.is_valid():
-        permit = form.save()
-        # send_report_notification(request, permit)
-        return redirect(submitted_permit, permit_id = 2)
-    return render(request, "specialuseform/submit.html", {'form': form})
+# def submit(request):
+#     form = PermitForm(request.POST or None)
+#     if form.is_valid():
+#         permit = form.save()
+#         # send_report_notification(request, permit)
+#         return redirect(submitted_permit, permit_id = permit.permit_id)
+#     return render(request, "specialuseform/submit.html", {'form': form})
+
+def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
+    if permit_id:
+        permit = get_object_or_404(Permit, permit_id=permit_id)
+        submit_button_text = 'Save Changes'
+    else:
+        permit = Permit()
+        submit_button_text = 'Submit Your Application'
+
+    form = PermitForm(request.POST or None, instance=permit)
+    if request.POST and form.is_valid():
+        form.save()
+
+        # Save was successful, so redirect to another page
+        # return redirect(submitted_permit, permit.permit_id)
+        return redirect(submitted_permit, form.instance.permit_id)
+
+    return render(request, template_name, {
+        'form': form, 'submit_text': submit_button_text
+    })
 
 def submitted_permit(request, permit_id):
     # logger.error(permit_id)
@@ -24,6 +44,13 @@ def submitted_permit(request, permit_id):
     # permit_dict = model_to_dict(permit)
     permit_dict = PermitForm(data=model_to_dict(permit))
     return render(request, "specialuseform/submitted_permit.html", {'permit': permit, 'permit_dict': permit_dict})
+
+def cancel(request, permit_id):
+    permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
+    permit.status = 'user_cancelled'
+    permit.save()
+    return render(request, 'specialuseform/cancel_permit.html', {'permit': permit})
+
 
 # @todo: Fix redirect so users don't get stuck in admin screen. See #7.
 @login_required(login_url='/admin/')

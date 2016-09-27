@@ -6,11 +6,13 @@
     Application #{{ permit.permit_id }}: {{ permit.event_name }}
   </p>
 
-  <p> Permit Status: {{ permit.status}}</p>
+  <p> Permit Status: {{ permit.get_status_display }}</p>
 
   <p>You will recieve an email notification from the Forest Service in a few days about whether your permit has been approved.
     Please review your information to make sure it is correct.</p>
-  <button> Edit Permit Information</button>
+  <a href="{% url 'edit' permit.permit_id %}"><button> Edit Permit Information</button></a>
+
+  <a href="{% url 'cancel' permit.permit_id %}"><button> Cancel Application</button></a>
   <table>
     {% for field in permit_dict %}
       <tr>
