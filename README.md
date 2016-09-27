@@ -1,6 +1,8 @@
 # Forest Service Prototype
 This is a Django application to test out an online permit of the non-commercial group use Forest Service Permit.
 
+For the clearest view of issue priorities and status, check [this Waffle board](waffle.io/18F/forest-service-prototype).
+
 ## Local Installation
 
 This app is designed to run on Python 3.5.2. `pyenv` is recommended for managing
