@@ -20,7 +20,7 @@ def submitted_permit(request):
 # @todo: Fix redirect so users don't get stuck in admin screen. See #7.
 @login_required(login_url='/admin/')
 def applications(request):
-    permits = Permit.objects.all()
+    permits = Permit.objects.all().order_by('-status', 'start_date', 'created')
     return render(request, "specialuseform/applications.html", {
         'permits': permits
         })
