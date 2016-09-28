@@ -10,7 +10,7 @@ class Permit(models.Model):
         ('approved', 'Approved'),
         ('in_review', 'In Review'),
         ('not_approved', 'Rejected'),
-        ('user_cancelled', "User Cancelled")
+        ('user_cancelled', 'User Cancelled')
     )
     permit_id = models.AutoField(primary_key=True)
     event_name = models.CharField(max_length=250,

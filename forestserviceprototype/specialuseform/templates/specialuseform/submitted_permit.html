@@ -8,7 +8,8 @@
 
   <p> Permit Status: {{ permit.get_status_display }}</p>
 
-  <p>You will recieve an email notification from the Forest Service in a few days about whether your permit has been approved.
+  <p>You will receive an email notification from the Forest Service in a few days about whether your permit has been approved.
+    If you do not hear back from the Forest service, please call XXX-XXX-XXXX.
     Please review your information to make sure it is correct.</p>
   <a href="{% url 'edit' permit.permit_id %}"><button> Edit Permit Information</button></a>
 
