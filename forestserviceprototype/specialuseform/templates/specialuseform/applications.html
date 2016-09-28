@@ -21,7 +21,7 @@
             <td>{{ permit.start_date }}</td>
             <td>{{ permit.end_date }}</td>
             <td>{{ permit.created }}</td>
-            <td>{{ permit.status }}</td>
+            <td>{{ permit.get_status_display }}</td>
         </tr>
       {% endfor %}
       </table>
