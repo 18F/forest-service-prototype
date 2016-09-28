@@ -7,7 +7,24 @@
 
   <form method="POST" action="." class="usa-form-large">
     {% csrf_token %}
-    {% for field in form %}
+    {% for fieldset in form.fieldsets %}
+    <fieldset>
+      {% if fieldset.legend %}<legend>{{ fieldset.legend }}</legend>{% endif %}
+      {% for field in fieldset %}
+        {% if field.errors %}<div class="usa-input-error">{% endif %}
+          <label for="{{ field|id }}" {% if field.errors %}class="usa-input-error-label"{% endif %}>
+            {{ field.label }}:
+          </label>
+          {% if field.help_text %}<div class="help-text usa-form-hint">{{ field.help_text }}</div>{% endif %}
+          {% for error in field.errors %}
+            <span class="usa-input-error-message" role="alert">{{ error }}</span>
+          {% endfor %}
+          {% widget field %}
+        {% if field.errors %}</div>{% endif %}
+      {% endfor %}
+    </fieldset>
+    {% endfor %}
+    <!-- {% for field in form %}
       {% if field.errors %}<div class="usa-input-error">{% endif %}
         <label for="{{ field|id }}" {% if field.errors %}class="usa-input-error-label"{% endif %}>
           {{ field.label }}:
@@ -18,7 +35,7 @@
         {% endfor %}
         {% widget field %}
       {% if field.errors %}</div>{% endif %}
-    {% endfor %}
+    {% endfor %} -->
     <div class="button_wrapper">
       <button class="usa-button-big" type="submit">{{ submit_text }}</button>
     </div>
