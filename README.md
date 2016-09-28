@@ -7,6 +7,8 @@ This non-commercial group use permit prototype is being developed as part of ini
 
 In general, this prototype is driven by the goals, users and features set forward at a special uses permitting kick-off workshop. Read more in the [special uses workshop summary](https://github.com/18F/forest-service-prototype/raw/master/docs/special-uses-read-out.pdf). In a few weeks, we will kick off a similar discovery effort for Christmas tree permits. Read more in the [Christmas tree workshop summary](https://github.com/18F/forest-service-prototype/raw/master/docs/christmas-tree-read-out.pdf).
 
+For the clearest view of issue priorities and status, check [this Waffle board](waffle.io/18F/forest-service-prototype).
+
 ## Local Installation
 
 This app is designed to run on Python 3.5.2. `pyenv` is recommended for managing
