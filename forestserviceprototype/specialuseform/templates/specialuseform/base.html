@@ -6,20 +6,20 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>{% block title %}Forest Service Prototype{% endblock %}</title>
       <link rel="stylesheet" href="{% static "css/uswds.min.css" %}">
+      <link rel="stylesheet" href="{% static "additional.css" %}">
       <style type="text/css">
-        .help-text {
-            font-style: italic;
-            font-weight: normal;
-        }
+
       </style>
   </head>
   <body>
     <div class="usa-grid-full">
       <div class="usa-width-one-whole">
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/USFS_Logo.svg/965px-USFS_Logo.svg.png" style="height: 100px;float: left;">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/USFS_Logo.svg/965px-USFS_Logo.svg.png" alt="Forest Service Logo" style="height: 100px;float: left;">
         {% block content %}{% endblock %}
       </div>
     </div>
   <script src="{% static "js/uswds.min.js" %}"></script>
+  <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+  <script src="{% static "additional.js" %}"></script>
   </body>
 </html>
