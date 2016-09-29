@@ -28,7 +28,7 @@ def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
         'form': form, 'submit_text': submit_button_text
     })
 
-def submitted_permit(request, permit_id):
+def submitted_permit(request, permit_id, check_status=False):
     permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
     permit_dict = PermitForm(data=model_to_dict(permit))
     return render(request, "specialuseform/submitted_permit.html", {'permit': permit, 'permit_dict': permit_dict})

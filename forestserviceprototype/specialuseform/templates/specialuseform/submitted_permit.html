@@ -1,10 +1,15 @@
 {% extends "specialuseform/base.html" %}
 
 {% block content %}
-  <h1>Application Submitted</h1>
-  <p class="usa-font-lead">
-    Application #{{ permit.permit_id }}: {{ permit.event_name }}
-  </p>
+  <h1>Recieved Application</h1>
+  {% if not check_status %}
+      <div class="usa-alert usa-alert-success">
+    <div class="usa-alert-body">
+    <h3 class="usa-alert-heading">Application Submitted Successfully</h3>
+    <p class="usa-alert-text">Application #{{ permit.permit_id }}: {{ permit.event_name }} is in the queue.</p>
+    </div>
+</div>
+{% endif %}
 
   <p> Permit Status: {{ permit.get_status_display }}</p>
 
