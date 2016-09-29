@@ -9,18 +9,15 @@ class Permit(models.Model):
         ('needs_approval', 'Needs Approval'),
         ('approved', 'Approved'),
         ('in_review', 'In Review'),
-        ('not_approved', 'Rejected'),
-        ('user_cancelled', 'User Cancelled')
+        ('not_approved', 'Not Approved')
     )
-    permit_id = models.AutoField(primary_key=True)
     event_name = models.CharField(max_length=250,
         help_text='The name of the event')
     organizer_address_1 = models.CharField(max_length=250)
-    organizer_address_2 = models.CharField(max_length=250, blank=True)
+    organizer_address_2 = models.CharField(max_length=250)
     city = models.CharField(max_length=250)
-    state = localflavor.USStateField()
+    state = localflavor.USStateField(default="OH")
     zipcode = localflavor.USZipCodeField()
-    email = models.EmailField(blank=True)
     phone_daytime = localflavor.PhoneNumberField()
     phone_evening = localflavor.PhoneNumberField(blank=True)
     description = models.TextField()
