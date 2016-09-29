@@ -1,4 +1,4 @@
-Django>=1.9,<1.10
+Django>=1.10,<1.11
 psycopg2
 dj-database-url
 django-enumfields
