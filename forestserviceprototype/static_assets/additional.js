@@ -30,9 +30,7 @@ $(document).ready(function(){
   };
 
   $('#permit-holder-same-address').change(function(){
-    console.log($(this).val());
     if($(this).val() == "no"){
-    console.log($("#permit_holder_1_fieldset input").val())
       $('.permit_holder_1_fieldset input').prop('disabled', false);
       $('.permit_holder_1_fieldset select').prop('disabled', false);
     } else {
@@ -40,6 +38,14 @@ $(document).ready(function(){
         $('#'+fieldMapping[key]).val($('#'+key).val()).prop('disabled', true);
       };
     }
-
   });
+
+  $('button:submit').mousedown(function(){
+    console.log("i fired");
+    for(key in fieldMapping){
+      $('#'+fieldMapping[key]).prop('disabled', false);
+    }
+  });
+
+
 });
