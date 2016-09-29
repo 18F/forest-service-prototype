@@ -1,0 +1,11 @@
+{% extends "specialuseform/base.html" %}
+
+{% block content %}
+  <h1>Application Cancelled</h1>
+  <p class="usa-font-lead">
+    Application #{{ permit.permit_id }}: {{ permit.event_name }}
+  </p>
+
+  <p>Confirming: your permit has been cancelled.</p>
+
+{% endblock content %}
