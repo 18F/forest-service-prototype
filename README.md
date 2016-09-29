@@ -1,5 +1,13 @@
 # Forest Service Prototype
-This is a Django application to test out an online permit of the non-commercial group use Forest Service Permit.
+This is a Django application to test out an online permit of the non-commercial group use Forest Service permit.
+
+## Guiding documents
+
+This non-commercial group use permit prototype is being developed as part of initial, discovery research for a broader Forest Service ePermitting project. Read more in the [discovery plan](https://github.com/18F/forest-service-prototype/raw/master/docs/discovery-plan.pdf).
+
+In general, this prototype is driven by the goals, users and features set forward at a special uses permitting kick-off workshop. Read more in the [special uses workshop summary](https://github.com/18F/forest-service-prototype/raw/master/docs/special-uses-read-out.pdf). In a few weeks, we will kick off a similar discovery effort for Christmas tree permits. Read more in the [Christmas tree workshop summary](https://github.com/18F/forest-service-prototype/raw/master/docs/christmas-tree-read-out.pdf).
+
+For the clearest view of issue priorities and status, check [this Waffle board](https://waffle.io/18F/forest-service-prototype).
 
 ## Local Installation
 
