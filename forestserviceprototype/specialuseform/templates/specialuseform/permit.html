@@ -1,0 +1,49 @@
+{% extends "specialuseform/base.html" %}
+
+{% block content %}
+  <h1>Your permit</h1>
+  <p class="usa-font-lead">
+      <strong>Status:</strong> {{ permit.get_status_display }}
+  </p>
+  <p>
+      <em>Questions? Contact XYZ.</em>
+  </p>
+  <h3>Event name:</h3>
+  <p>
+    {{ permit.event_name }}
+  </p>
+  <h3>Organizer address:</h3>
+  <p>
+    {{ permit.organizer_address_1 }}<br />
+    {{ permit.organizer_address_2 }}<br />
+    {{ permit.city }}, {{ permit.state }}  {{ permit.zipcode }}
+  </p>
+  <h3>Phone number(s):</h3>
+  <p>
+    {{ permit.phone_daytime }}<br />
+    {{ permit.phone_evening }}
+  </p>
+  <h3>Description:</h3>
+  <p>
+    {{ permit.description }}
+  </p>
+  <h3>Location:</h3>
+  <p>
+    {{ permit.location }}
+  </p>
+  <h3>Number of people:</h3>
+  <p>
+    {{ permit.participant_number }} participant{{ permit.participant_number|pluralize }}<br />
+    {{ permit.spectator_number }} spectator{{permit.spectator_number|pluralize }}
+  </p>
+  <h3>When:</h3>
+  <p>
+    {{ permit.start_date }} {% if permit.end_date != permit.start_date %} through {{ permit.end_date }} {% endif %}
+  </p>
+  <h3>Submitted by:</h3>
+  <p>
+    {{ permit.permit_holder_name }}<br />
+    {{ permit.permit_holder_signature }}<br />
+    {{ permit.created }}
+  </p>
+{% endblock %}
