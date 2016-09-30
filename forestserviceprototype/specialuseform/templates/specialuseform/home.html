@@ -1,0 +1,14 @@
+{% extends "specialuseform/base.html" %}
+
+{% block content %}
+<h1>Welcome to the Forest Service Online Permits System</h1>
+
+<p>Are you an commerical outfitter?</p>
+<small>Coming Soon</small>
+<div class="button_wrapper">
+   <button class="usa-button-disabled" disabled>Yes</button>
+ </div>
+
+<p>Are you looking to run an event in the forest?</p>
+<p><a href="{% url 'edit' permit.permit_id %}"><button>Yes</button></a></p>
+{% endblock content %}

@@ -9,6 +9,9 @@ import logging
 # Create your views here.
 logger = logging.getLogger(__name__)
 
+def home(request):
+    return render(request, "specialuseform/home.html")
+
 def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
     if permit_id:
         permit = get_object_or_404(Permit, permit_id=permit_id)
