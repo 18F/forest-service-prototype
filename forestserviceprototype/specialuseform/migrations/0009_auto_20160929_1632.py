@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='permit',
             name='permit_holder_2_name',
-            field=models.CharField(default='Additional Permit Holder', help_text='Name of Permit Holder', max_length=250),
+            field=models.CharField(help_text='Name of Permit Holder', max_length=250),
         ),
         migrations.AddField(
             model_name='permit',

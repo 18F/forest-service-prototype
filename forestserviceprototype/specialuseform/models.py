@@ -25,7 +25,7 @@ class Permit(models.Model):
     phone_evening = localflavor.PhoneNumberField(blank=True)
     description = models.TextField()
     location = models.CharField(max_length=250)
-    participant_number = models.IntegerField(verbose_name='Number of Participants', help_text='This is the number of participants who will partake in the event.')
+    participant_number = models.IntegerField(verbose_name='Number of Participants', help_text='This is the number of people who will directly participate in the event.')
     spectator_number = models.IntegerField(blank=True, verbose_name='Number of Spectators', help_text='If your event will have spectators (such as at a sporting event), please note how many additional people will be spectators.')
     start_date = models.DateTimeField(default=timezone.now, help_text='For example: 04 28 1986')
     end_date = models.DateTimeField(default=timezone.now, help_text='For example: 04 28 1986')

@@ -1,8 +1,9 @@
 $(document).ready(function(){
+  $('.permit_hide').hide();
   $('.add_another_permit_holder').click(function(e){
     e.preventDefault();
     $(".permit_hide").toggle();
-    $(this).text($(this).text() == "Add Another Permit Holder" ? "Remove Second Permit Holder" : "Add Another Permit Holder");
+    $(this).text($(this).text() == "Add another permit holder" ? "Remove second permit holder" : "Add another permit holder");
   });
 
   const fieldMapping = {
