@@ -28,17 +28,7 @@ class PermitForm(BetterModelForm):
             }),
         ]
         widgets = {
-            'city': forms.TextInput(attrs={'class': 'medium-grid'}),
-            'state': forms.Select(attrs={'class': 'small-grid'}),
             'zipcode': forms.TextInput(attrs={'class': 'usa-input-medium'}),
-            'phone_daytime': forms.PhoneNumberInput(attrs={'class': 'medium-grid'}),
-            'phone_evening': forms.PhoneNumberInput(attrs={'class': 'medium-grid'}),
-            'start_date': forms.DateInput(attrs={'class': 'medium-grid'}),
-            'end_date': forms.DateInput(attrs={'class': 'medium-grid'}),
-            'permit_holder_city': forms.TextInput(attrs={'class': 'medium-grid'}),
-            'permit_holder_state': forms.Select(attrs={'class': 'small-grid'}),
             'permit_holder_zipcode': forms.TextInput(attrs={'class': 'usa-input-medium'}),
-            'permit_holder_2_city': forms.TextInput(attrs={'class': 'medium-grid'}),
-            'permit_holder_2_state': forms.Select(attrs={'class': 'small-grid'}),
             'permit_holder_2_zipcode': forms.TextInput(attrs={'class': 'usa-input-medium'}),
         }
