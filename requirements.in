@@ -10,4 +10,4 @@ requests
 pytz
 django-localflavor
 Pillow
-django-form-utils==1.0.3
+django-form-utils
