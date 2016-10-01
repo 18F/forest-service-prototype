@@ -43,8 +43,7 @@ $(document).ready(function(){
     }
   });
 
-  $('button:submit').mousedown(function(){
-    console.log("i fired");
+  $('#application-submit button:submit').mousedown(function(){
     for(key in fieldMapping){
       $('#'+fieldMapping[key]).prop('disabled', false);
     }
@@ -53,21 +52,32 @@ $(document).ready(function(){
 //Form handling for application approval and rejection
 $('#approve-form').on('submit', function(event){
     event.preventDefault();
-    console.log("form submitted!")  // sanity check
-    approve_application();
+    form_decision(this, '', 'Approved');
 });
 
-function approve_application() {
-    console.log($('#approve-form').prop("action")); // sanity check
+$('#deny-error-message').hide();
+$('#deny-form').on('submit', function(event){
+    event.preventDefault();
+    reason = $('#input-type-textarea').val();
+    if (reason.length > 0){
+      $('#deny-error-message').hide().text("");
+      form_decision(this, reason, 'Rejected');
+    } else {
+      $('#deny-error-message').show().text("Please enter an explanation for your denial");
+    }
+});
+function form_decision(div, decision_explanation, new_status) {
+    console.log($(div).prop("action")); // sanity check
     $.ajax({
-        url : $('#approve-form').prop("action"), // the endpoint
+        url : $(div).prop("action"), // the endpoint
         type : "POST", // http method
-        data : { }, // data sent with the post request
+        data : { deny_reason :  decision_explanation}, // data sent with the post request
 
         // handle a successful response
         success : function(json) {
-            // $('#post-text').val(''); // remove the value from the input
             console.log(json); // log the returned json to the console
+            $('#permit-status').text(new_status);
+            $('#application-review').hide();
             console.log("success"); // another sanity check
         },
 
@@ -130,7 +140,7 @@ function approve_application() {
                 xhr.setRequestHeader("X-CSRFToken", csrftoken);
             }
         }
-    }); 
+    });
 
 
 });

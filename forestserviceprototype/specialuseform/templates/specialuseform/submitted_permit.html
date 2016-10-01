@@ -11,25 +11,34 @@
     </div>
 {% endif %}
 
-  <p>Permit Status: {{ permit.get_status_display }}</p>
+  <h3>Permit Status: <span id="permit-status">{{ permit.get_status_display }}</span></h3>
 
   {% if user.is_authenticated %}
+  <div id="application-review">
   <form action="{% url 'change-application' permit.permit_id 'approved' %}" method="post" id="approve-form">
     {% csrf_token %}
-    <button class="usa-button-big" type="submit">Approve application</button>
+    <button type="submit" name="approve">Approve application</button>
   </form>
 
-  <button>Deny application</button>
-  <label for="input-type-textarea">Reason for denying application</label>
-  <textarea id="input-type-textarea" name="input-type-textarea"></textarea>
+  <form action="{% url 'change-application' permit.permit_id 'not_approved' %}" method="post" id="deny-form">
+    {% csrf_token %}
+    <button type="submit" name="deny">Deny application</button>
+    <span class="usa-input-error-message" id="deny-error-message" role="alert"></span>
+    <label for="input-type-textarea">Reason for denying ap  plication</label>
+    <textarea id="input-type-textarea" name="input-type-textarea" value="{{ permit.decision_explanation}}">{{ permit.decision_explanation}}</textarea>
+  </form>
+</div>
+
   {% endif %}
 
   <p>You will receive an email notification from the Forest Service in a few days about whether your permit has been approved.
     If you do not hear back from the Forest Service, please call XXX-XXX-XXXX.
     Please review your information to make sure it is correct.</p>
+    {% if not user.is_authenticated %}
   <a href="{% url 'edit' permit.permit_id %}"><button> Edit Permit Information</button></a>
 
   <a href="{% url 'cancel' permit.permit_id %}"><button> Cancel Application</button></a>
+  {% endif %}
   <table>
     {% for field in permit_dict %}
       <tr>

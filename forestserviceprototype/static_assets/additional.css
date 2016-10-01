@@ -10,3 +10,11 @@
 input[disabled], fieldset[disabled] input, select[disabled] {
     background-color: #eee;
 }
+
+#approve-form {
+  float: left
+}
+
+#deny-form{
+  padding-top: 0.25px;
+}

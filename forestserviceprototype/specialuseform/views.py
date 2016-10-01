@@ -38,10 +38,13 @@ def submitted_permit(request, permit_id, check_status=True):
     return render(request, "specialuseform/submitted_permit.html", {'permit': permit, 'permit_dict': permit_dict, 'check_status': check_status})
 
 def change_application_status(request, permit_id, status):
+    decision_explanation = request.POST.get('deny_reason')
     permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
+    permit.decision_explanation = decision_explanation
     permit.status = status
     permit.save()
-    return HttpResponse( json.dumps({"response": permit.status}),
+    # @TODO: Add email notification to permit.email that application status has changed
+    return HttpResponse( json.dumps({"status": permit.status, "reason": permit.decision_explanation}),
             content_type="application/json"
         )
 

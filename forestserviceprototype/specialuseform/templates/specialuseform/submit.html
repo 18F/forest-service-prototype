@@ -5,7 +5,7 @@
   <h1>Apply for a noncommercial group use permit</h1>
 
 
-  <form method="POST" action="." class="usa-form-large">
+  <form method="POST" action="." class="usa-form-large" id="#application-submit">
     {% csrf_token %}
     {% for fieldset in form.fieldsets %}
         <fieldset class="{{ fieldset.classes }}">
