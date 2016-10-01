@@ -13,6 +13,17 @@
 
   <p>Permit Status: {{ permit.get_status_display }}</p>
 
+  {% if user.is_authenticated %}
+  <form action="{% url 'change-application' permit.permit_id 'approved' %}" method="post">
+    {% csrf_token %}
+    <button class="usa-button-big" type="submit">Approve application</button>
+  </form>
+
+  <button>Deny application</button>
+  <label for="input-type-textarea">Reason for denying application</label>
+  <textarea id="input-type-textarea" name="input-type-textarea"></textarea>
+  {% endif %}
+
   <p>You will receive an email notification from the Forest Service in a few days about whether your permit has been approved.
     If you do not hear back from the Forest Service, please call XXX-XXX-XXXX.
     Please review your information to make sure it is correct.</p>

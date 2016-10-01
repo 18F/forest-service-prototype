@@ -5,6 +5,7 @@ from django.forms.models import model_to_dict
 from .forms import PermitForm
 from .models import Permit
 import logging
+import json
 
 # Create your views here.
 logger = logging.getLogger(__name__)
@@ -25,16 +26,24 @@ def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
         form.save()
 
         # Save was successful, so redirect to another page
-        return redirect(submitted_permit, form.instance.permit_id)
+        return redirect(submitted_permit, form.instance.permit_id, check_status=False)
 
     return render(request, template_name, {
         'form': form, 'submit_text': submit_button_text
     })
 
-def submitted_permit(request, permit_id, check_status=False):
+def submitted_permit(request, permit_id, check_status=True):
     permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
     permit_dict = PermitForm(data=model_to_dict(permit))
-    return render(request, "specialuseform/submitted_permit.html", {'permit': permit, 'permit_dict': permit_dict})
+    return render(request, "specialuseform/submitted_permit.html", {'permit': permit, 'permit_dict': permit_dict, 'check_status': check_status})
+
+def change_application_status(request, permit_id, status):
+    permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
+    permit.status = status
+    permit.save()
+    return HttpResponse( json.dumps({"response": permit.status}),
+            content_type="application/json"
+        )
 
 def cancel(request, permit_id):
     permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
