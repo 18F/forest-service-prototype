@@ -14,7 +14,7 @@
   <p>Permit Status: {{ permit.get_status_display }}</p>
 
   {% if user.is_authenticated %}
-  <form action="{% url 'change-application' permit.permit_id 'approved' %}" method="post">
+  <form action="{% url 'change-application' permit.permit_id 'approved' %}" method="post" id="approve-form">
     {% csrf_token %}
     <button class="usa-button-big" type="submit">Approve application</button>
   </form>
