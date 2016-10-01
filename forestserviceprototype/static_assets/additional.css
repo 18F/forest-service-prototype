@@ -18,3 +18,8 @@ input[disabled], fieldset[disabled] input, select[disabled] {
 #deny-form{
   padding-top: 0.25px;
 }
+
+.center
+  {
+    text-align: center;
+}

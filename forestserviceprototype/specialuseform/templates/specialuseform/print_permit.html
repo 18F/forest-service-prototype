@@ -1,0 +1,57 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>{% block title %}Forest Service Prototype{% endblock %}</title>
+      <link rel="stylesheet" href="{% static "additional.css" %}">
+  </head>
+  <body>
+<p>Auth ID:  #AUTH_ID#</p>
+<p>Use Code:  #USE_CODE#</p>
+<p>Expiration Date:  #EXPIRATION_DATE#</p>
+<p class="center"><strong> U.S. DEPARTMENT OF AGRICULTURE </strong></p>
+<p class="center"><strong> Forest Service</strong></p>
+<p class="center"><strong> SPECIAL-USE PERMIT FOR</strong></p>
+<p class="center"><strong> NONCOMMERCIAL GROUP USE</strong></p>
+<p class="center">(Ref.: 36 CFR 251.54)</p>
+<p class="center">Authority:  Organic Act of 1897,16 U.S.C. 551</p>
+<p class="center"><strong> PART II – PERMIT</strong></p>
+<p>Purpose:</p>
+<p>Noncommercial group use permits do not grant or deny freedom of assembly or freedom of speech.  The rights to freedom of assembly and freedom of speech are guaranteed by the United States Constitution.  These rights are fully respected by the Forest Service.  When noncommercial group use permits are issued, they regulate time, place, and manner with respect to the exercise of these rights by groups of 75 or more people on National Forest System lands.
+    Noncommercial group use permits authorize the holder to use and occupy the National Forest System lands covered by the permit, subject to rights retained by the United States, including continuing rights of access, a continuing right of physical entry for inspection, monitoring, or for any other purposes consistent with any right or obligation of the United States, and the right to require common use of the land or to authorize use by others in any way that is not inconsistent with the privileges granted by the permit.  The use and occupancy authorized by a noncommercial group use permit would not be allowed without the permit.  The primary purposes of noncommercial group use permits include protection of National Forest System lands and resources, promotion of public health and safety, and allocation of space among competing uses of National Forest System lands.</p>
+<p>1.   Use under this permit shall begin on {{ permit.start_date }}  and end on {{ permit.end_date }} .  The permit shall not be extended.</p>
+<p>2.         {{ permit.permit_holder_name}} (the holder) is hereby authorized to use, subject to the terms of this permit, National Forest System lands described as      , as shown in attached Exhibit(s)      .  This permit covers approximately      acres and/or       miles.</p>
+<p>3.   The holder is authorized to conduct the following activities and install the following improvements in the permitted area:</p><p>#PURPOSE#</p>
+<p>4. The holder shall conduct the authorized activities according to the attached approved plans and specifications, Exhibit(s)      .  The holder shall not install any improvements not specifically identified and approved in clause 3, in exhibits attached to this permit, or by the authorized officer during the activity authorized by this permit.</p>
+<p>5.  No soil, trees, or other vegetation may be destroyed or removed from National Forest System lands without specific prior written permission from the authorized officer.</p>
+<p>6.  The holder shall comply with all federal, state, county, and municipal laws, ordinances, and regulations which are applicable to the area or operations covered by this permit.</p>
+<p>7.  The holder shall maintain the improvements and premises to standards of repair, orderliness, neatness, sanitation, and safety acceptable to the authorized officer.  The holder shall fully repair and bear the expense for all damages, other than ordinary wear and tear, to National Forest System lands, roads and trails caused by the holder's activities.</p>
+<p>8.   The holder has the responsibility of inspecting the use area and adjoining areas for dangerous trees, hanging limbs, and other evidence of hazardous conditions which would pose a risk of injury to individuals.  After securing permission from the authorized officer, the holder shall remove such hazards.</p>
+<p>9.   The holder shall be liable for any injury, loss, or damage, including fire suppression costs and environmental harm or injury to natural resources, that arises in connection with the use and occupancy authorized by this permit.</p>
+<p>10. The holder shall indemnify and hold harmless the United States for any injury, loss, or damage, including third-party claims, damage to federal property, fire suppression costs, and environmental harm or injury to natural resources, that arises in connection with the use and occupancy authorized by this permit.</p>
+<p>11. 	The persons who sign this permit are not subject to any individual liability under this permit as a result of that signature.  They provide their name solely to allow notice of actions pertaining to the permit to be communicated to the holder and to give the permit legal effect.  At least one of the persons who sign this permit shall be available to the Forest Service from the date this permit is issued until the use authorized by this permit has concluded.</p>
+<p>12. The holder agrees to permit free and unrestricted access to and upon the premises at all times for all lawful and proper purposes not inconsistent with the intent of the permit or with the reasonable exercise and enjoyment by the holder of the privileges thereof.</p>
+<p>13. This permit is subject to all valid existing rights and claims outstanding in third parties.</p>
+<p>14. This authorization may be revoked or suspended only in accordance with 36 CFR 251.60(a)(1)(i).  Upon expiration or revocation of this permit, the holder shall immediately remove all improvements except those owned by the United States, and shall restore the site within days, unless otherwise agreed upon in writing.  If the holder fails to remove the improvements, they shall become the property of the United States, but that will not relieve the holder of liability for the cost of their removal and the restoration of the site.</p>
+<p>15. This permit is a license for the use of federally owned land.  It does not grant any interest in real property.  This permit is not transferable.  The holder shall not enter into any agreements with third parties for occupancy of the authorized premises and improvements.</p>
+<p>16. Any decision concerning this permit, including but not limited to suspension or revocation and modification of permit terms and conditions, is not subject to administrative appeal and is immediately subject to judicial review.</p>
+<p>17. This permit is accepted subject to the conditions set forth herein, including any conditions in any exhibits attached to and made a part of this permit.</p>
+<p>18. The above clauses shall control if they conflict with additional clauses or provisions.</p><p>#INSERT TERM HERE#</p><p>
+I have read and understand the terms	U.S. DEPARTMENT OF AGRICULTURE
+and conditions and agree to abide by them.	Forest Service</p>
+<p>HOLDER:	                                     Authorization is granted:</p>
+<p>By:           	By:  </p>
+<p>Name:  {{ permit.permit_holder_name}}        	Name: Smokey the bear</p>
+<p>Date:   {{ permit.created }}                   Title: Forest Service Special Uses Administrator</p>
+<p>	                                              Date:  {{ permit.updated }}</p>
+<p><strong>HOLDER MUST HAVE THIS PERMIT (OR A LEGIBLE COPY) IN POSSESSION DURING THE AUTHORIZED ACTIVITY</strong></p>
+<p>According to the Paperwork Reduction Act of 1995, no persons are required to respond to a collection of information unless it displays a valid OMB control number.  The valid OMB control number for this information collection is 0596-0082.</p>
+<p>This information is needed by the Forest Service to evaluate requests to use National Forest System lands and manage those lands to protect natural resources, administer the use, and ensure public health and safety.  This information is required to obtain or retain a benefit.  The authority for that requirement is provided by the Organic Act of 1897 and the Federal Land Policy and management Act of 1976, which authorizes the Secretary of Agriculture to promulgate rules and regulations for authorizing and managing National Forest System lands.  These statutes, along with the Term Permit Act, National Forest Ski Area Permit Act, Granger-Thye Act, Mineral Leasing Act, Alaska Term Permit Act, Act of September 3, 1954, Wilderness Act,
+   National Forest Roads and Trails Act, Act of November 16, 1973, Archeological Resources Protection Act, and the Alaska National Interest Lands Conservation Act,
+   authorize the Secretary of Agriculture to issue authorizations for the use and occupancy of National Forest System lands.  The Secretary of Agriculture's regulations at 36 CFR Part 251, Subpart B, establish procedures for those authorizations.</p>
+<p>The Privacy Act of 1974 (5 U.S.C. 552a) and the Freedom of Information Act (5 U.S.C. 552) govern the confidentiality to be provided for information received by the Forest Service.<br />
+Public reporting burden for this collection of information is estimated to average 15  minutes per response, including the time for reviewing instructions, searching existing data sources, gathering and maintaining the data needed, and completing and reviewing the collection of information.<p>
+</body>
+</html>
