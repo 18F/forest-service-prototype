@@ -14,6 +14,10 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import dj_database_url
 
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -109,3 +113,10 @@ STATICFILES_DIRS = [
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Email settings
+EMAIL_HOST = os.environ.get['EMAIL_HOST']
+EMAIL_HOST_USER = os.environ.get['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ.get['EMAIL_HOST_PASSWORD']
+EMAIL_PORT = os.environ.get['EMAIL_HOST_PORT']
+EMAIL_USE_TLS = os.environ.get['EMAIL_USE_TLS']
