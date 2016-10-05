@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.forms.models import model_to_dict
+from django.core.mail import send_mail
 from .forms import PermitForm
 from .models import Permit
 import logging
@@ -13,13 +14,22 @@ def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
     if permit_id:
         permit = get_object_or_404(Permit, permit_id=permit_id)
         submit_button_text = 'Save Changes'
+        send_submitted_email = True
     else:
         permit = Permit()
         submit_button_text = 'Submit Your Application'
+        send_submitted_email = False
 
     form = PermitForm(request.POST or None, instance=permit)
     if request.POST and form.is_valid():
         form.save()
+        permit = form.cleaned_data
+        permit_url = request.build_absolute_uri(
+                                      post.get_absolute_url())
+        subject = '{} - Application #{} Has Been Submitted "{}"'.format(permit.event_name, permit.permit_id)
+        message = 'Your Application for {} [Application ID#{}] has been recieved.\n\n You will recieved notification via email when your application has been reviewd. \n You may review your status at {}'.format(permit.event_name, permit.permit_id, permit_url)
+        send_mail(subject, message, 'admin@myblog.com', permit.email)
+        sent = True
 
         # Save was successful, so redirect to another page
         return redirect(submitted_permit, form.instance.permit_id)

@@ -115,8 +115,8 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Email settings
-EMAIL_HOST = os.environ.get['EMAIL_HOST']
-EMAIL_HOST_USER = os.environ.get['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD = os.environ.get['EMAIL_HOST_PASSWORD']
-EMAIL_PORT = os.environ.get['EMAIL_HOST_PORT']
-EMAIL_USE_TLS = os.environ.get['EMAIL_USE_TLS']
+# EMAIL_HOST = os.environ.get['EMAIL_HOST']
+# EMAIL_HOST_USER = os.environ.get['EMAIL_HOST_USER']
+# EMAIL_HOST_PASSWORD = os.environ.get['EMAIL_HOST_PASSWORD']
+# EMAIL_PORT = os.environ.get['EMAIL_HOST_PORT']
+# EMAIL_USE_TLS = os.environ.get['EMAIL_USE_TLS']
