@@ -25,11 +25,10 @@ def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
         form.save()
         permit = form.cleaned_data
         permit_url = request.build_absolute_uri(
-                                      post.get_absolute_url())
+                                      permit.get_absolute_url())
         subject = '{} - Application #{} Has Been Submitted "{}"'.format(permit.event_name, permit.permit_id)
         message = 'Your Application for {} [Application ID#{}] has been recieved.\n\n You will recieved notification via email when your application has been reviewd. \n You may review your status at {}'.format(permit.event_name, permit.permit_id, permit_url)
         send_mail(subject, message, 'admin@myblog.com', permit.email)
-        sent = True
 
         # Save was successful, so redirect to another page
         return redirect(submitted_permit, form.instance.permit_id)
@@ -46,6 +45,11 @@ def submitted_permit(request, permit_id, check_status=False):
 def cancel(request, permit_id):
     permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
     permit.status = 'user_cancelled'
+    permit_url = request.build_absolute_uri(
+                                  permit.get_absolute_url())
+    subject = '{} - Application #{} Has Been Cancelled "{}"'.format(permit.event_name, permit.permit_id)
+    message = 'Your Application for {} [Application ID#{}] has been cancelled by the applicant.\n\n Please email the forest service administrator is this was in error'.format(permit.event_name, permit.permit_id, permit_url)
+    send_mail(subject, message, 'admin@myblog.com', permit.email)
     permit.save()
     return render(request, 'specialuseform/cancel_permit.html', {'permit': permit})
 

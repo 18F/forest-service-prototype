@@ -39,3 +39,7 @@ class Permit(models.Model):
 
     def __str__(self):
         return self.event_name
+
+    def get_absolute_url(self):
+    return reverse('submitted_permit',
+                   args=[self.permit_id])

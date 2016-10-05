@@ -9,3 +9,4 @@ wsgi-basic-auth
 requests
 pytz
 django-localflavor
+python-dotenv
