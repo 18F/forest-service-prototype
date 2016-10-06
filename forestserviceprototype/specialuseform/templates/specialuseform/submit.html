@@ -7,18 +7,34 @@
 
   <form method="POST" action="." class="usa-form-large">
     {% csrf_token %}
-    {% for field in form %}
-      {% if field.errors %}<div class="usa-input-error">{% endif %}
-        <label for="{{ field|id }}" {% if field.errors %}class="usa-input-error-label"{% endif %}>
-          {{ field.label }}:
-        </label>
-        {% if field.help_text %}<div class="help-text usa-form-hint">{{ field.help_text }}</div>{% endif %}
-        {% for error in field.errors %}
-          <span class="usa-input-error-message" role="alert">{{ error }}</span>
-        {% endfor %}
-        {% widget field %}
-      {% if field.errors %}</div>{% endif %}
+    {% for fieldset in form.fieldsets %}
+        <fieldset class="{{ fieldset.classes }}">
+          {% if fieldset.legend %}<legend>{{ fieldset.legend }}</legend>{% endif %}
+          {% for field in fieldset %}
+            {% if field.errors %}<div class="usa-input-error">{% endif %}
+            <label for="{{ field|id }}" {% if field.errors %}class="usa-input-error-label"{% endif %}>
+              {{ field.label }}: {% if field.field.required %}<span class="usa-additional_text">Required</span>{% endif %}
+            </label>
+            {% if field.help_text %}<div class="help-text usa-form-hint">{{ field.help_text }}</div>{% endif %}
+            {% for error in field.errors %}
+              <span class="usa-input-error-message" role="alert">{{ error }}</span>
+            {% endfor %}
+            {% widget field %}
+            {% if field.errors %}</div>{% endif %}
+
+            {% if field.name == 'permit_holder_name' %}
+            <label for="permit-holder-same-address">Is the contact address above the same as the permit holder?</label>
+            <select name="permit-holder-same-address" id="permit-holder-same-address">
+             <option value="yes" selected>Yes</option>
+             <option value="no">No</option>
+           </select>
+            {% endif %}
+          {% endfor %}
+        </fieldset>
     {% endfor %}
+    <div class="button_wrapper">
+      <button class="usa-button-medium add_another_permit_holder">Add another permit holder</button>
+    </div>
     <div class="button_wrapper">
       <button class="usa-button-big" type="submit">{{ submit_text }}</button>
     </div>
