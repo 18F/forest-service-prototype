@@ -26,7 +26,7 @@ def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
         form.save()
 
         # Save was successful, so redirect to another page
-        return redirect(submitted_permit, form.instance.permit_id, check_status=False)
+        return redirect(submitted_permit, permit_id=form.instance.permit_id)
 
     return render(request, template_name, {
         'form': form, 'submit_text': submit_button_text
