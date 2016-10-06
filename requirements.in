@@ -1,3 +1,4 @@
+pip-tools
 Django>=1.10,<1.11
 psycopg2
 dj-database-url
@@ -9,3 +10,6 @@ wsgi-basic-auth
 requests
 pytz
 django-localflavor
+Pillow
+django-form-utils
+pytest
