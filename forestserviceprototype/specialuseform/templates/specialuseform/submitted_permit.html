@@ -24,7 +24,7 @@
     {% csrf_token %}
     <button type="submit" name="deny">Deny application</button>
     <span class="usa-input-error-message" id="deny-error-message" role="alert"></span>
-    <label for="input-type-textarea">Reason for denying ap  plication</label>
+    <label for="input-type-textarea">Reason for denying application</label>
     <textarea id="input-type-textarea" name="input-type-textarea" value="{{ permit.decision_explanation}}">{{ permit.decision_explanation}}</textarea>
   </form>
 </div>
