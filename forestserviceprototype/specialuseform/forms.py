@@ -28,7 +28,7 @@ class PermitForm(BetterModelForm):
             }),
         ]
         widgets = {
-            'zipcode': forms.TextInput(attrs={'class': 'usa-input-medium'}),
+            'zipcode': forms.TextInput(attrs={'class': 'usa-input-medium','max_length': 5,'min_length': 5}),
             'start_date': forms.DateInput(),
             'end_date': forms.DateInput(),
             'permit_holder_zipcode': forms.TextInput(attrs={'class': 'usa-input-medium'}),
