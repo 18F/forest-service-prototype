@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^$', views.home, {}, name="home"),
     url(r'^submit/$', views.submit, {}, name="submit"),
     url(r'^edit/(?P<permit_id>\d*)$', views.submit, {}, name="edit"),
-    url(r'^submitted/(?P<permit_id>\d*)$', views.submitted_permit, name="submitted_permit"),
+    url(r'^submitted/(?P<permit_id>\d*)[?=\w]*$', views.submitted_permit, name="submitted_permit"),
     url(r'^cancel/(?P<permit_id>\d*)$', views.cancel, name="cancel"),
     url(r'^applications/', views.applications, name="applications"),
     url(r'^change/(?P<permit_id>\d+)/(?P<status>\D+)/', views.change_application_status, name="change-application")

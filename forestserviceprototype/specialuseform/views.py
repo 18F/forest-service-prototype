@@ -26,13 +26,14 @@ def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
         form.save()
 
         # Save was successful, so redirect to another page
-        return redirect(submitted_permit, permit_id=form.instance.permit_id)
+        return redirect('/submitted/'+str(form.instance.permit_id)+'?new=true')
 
     return render(request, template_name, {
         'form': form, 'submit_text': submit_button_text
     })
 
-def submitted_permit(request, permit_id, check_status=True):
+def submitted_permit(request, permit_id):
+    check_status = False if request.GET.get('new') else True
     permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
     permit_dict = PermitForm(data=model_to_dict(permit))
     return render(request, "specialuseform/submitted_permit.html", {'permit': permit, 'permit_dict': permit_dict, 'check_status': check_status})
