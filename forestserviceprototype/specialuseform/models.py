@@ -36,7 +36,7 @@ class Permit(models.Model):
     permit_holder_city = models.CharField(max_length=250, verbose_name="City")
     permit_holder_state = localflavor.USStateField(verbose_name="State")
     permit_holder_zipcode = localflavor.USZipCodeField(verbose_name="Zipcode")
-    permit_holder_2_name = models.CharField(max_length=250, help_text='Name of Permit Holder')
+    permit_holder_2_name = models.CharField(max_length=250, help_text='Name of Permit Holder', blank=True)
     permit_holder_2_signature = models.ImageField(blank=True)
     permit_holder_2_address_1 = models.CharField(max_length=250, verbose_name="Street Address 1", blank=True)
     permit_holder_2_address_2 = models.CharField(max_length=250, blank=True, verbose_name="Street Address 2")
@@ -48,6 +48,7 @@ class Permit(models.Model):
     status = models.CharField(max_length=100,
                               choices=STATUS_CHOICES,
                               default='needs_approval')
+    decision_explanation = models.TextField(blank=True)
 
     def __str__(self):
         return self.event_name
