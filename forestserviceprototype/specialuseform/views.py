@@ -55,7 +55,7 @@ def cancel(request, permit_id):
     permit.save()
     return render(request, 'specialuseform/cancel_permit.html', {'permit': permit})
 
-def print(request, permit_id):
+def print_permit(request, permit_id):
     permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
     return render(request, 'specialuseform/print_permit.html', {'permit': permit})
 

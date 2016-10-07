@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^edit/(?P<permit_id>\d*)$', views.submit, {}, name="edit"),
     url(r'^submitted/(?P<permit_id>\d*)[?=\w]*$', views.submitted_permit, name="submitted_permit"),
     url(r'^cancel/(?P<permit_id>\d*)$', views.cancel, name="cancel"),
-    url(r'^print/(?P<permit_id>\d*)$', views.print, name="print"),
+    url(r'^print/(?P<permit_id>\d*)$', views.print_permit, name="print_permit"),
     url(r'^applications/', views.applications, name="applications"),
     url(r'^change/(?P<permit_id>\d+)/(?P<status>\D+)/', views.change_application_status, name="change-application")
 ]
