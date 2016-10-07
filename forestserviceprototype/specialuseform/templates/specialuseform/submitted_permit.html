@@ -40,7 +40,7 @@
         <a href="{% url 'cancel' permit.permit_id %}"><button>Cancel Application</button></a>
       {% endif %}
       {% if permit.status == 'approved' %}
-        <a href="{% url 'print' permit.permit_id %}"><button>Print Application</button></a>
+        <a href="{% url 'print_permit' permit.permit_id %}"><button>Print Application</button></a>
       {% endif %}
     {% endif %}
   <table>
