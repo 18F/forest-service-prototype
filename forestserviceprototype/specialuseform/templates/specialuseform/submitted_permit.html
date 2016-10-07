@@ -35,10 +35,14 @@
     If you do not hear back from the Forest Service, please call XXX-XXX-XXXX.
     Please review your information to make sure it is correct.</p>
     {% if not user.is_authenticated %}
-  <a href="{% url 'edit' permit.permit_id %}"><button> Edit Permit Information</button></a>
-
-  <a href="{% url 'cancel' permit.permit_id %}"><button> Cancel Application</button></a>
-  {% endif %}
+      {% if permit.status == 'needs_approval' %}
+        <a href="{% url 'edit' permit.permit_id %}"><button>Edit Permit Information</button></a>
+        <a href="{% url 'cancel' permit.permit_id %}"><button>Cancel Application</button></a>
+      {% endif %}
+      {% if permit.status == 'approved' %}
+        <a href="{% url 'print_permit' permit.permit_id %}"><button>Print Application</button></a>
+      {% endif %}
+    {% endif %}
   <table>
     {% for field in permit_dict %}
       <tr>

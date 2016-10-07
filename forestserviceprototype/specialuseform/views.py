@@ -55,6 +55,9 @@ def cancel(request, permit_id):
     permit.save()
     return render(request, 'specialuseform/cancel_permit.html', {'permit': permit})
 
+def print_permit(request, permit_id):
+    permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
+    return render(request, 'specialuseform/print_permit.html', {'permit': permit})
 
 # @todo: Fix redirect so users don't get stuck in admin screen. See #7.
 @login_required(login_url='/admin/')
