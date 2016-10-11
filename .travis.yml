@@ -2,4 +2,11 @@ sudo: false
 language: python
 python:
   - "3.5"
+addons:
+  postgresql: '9.3'
+before_script:
+- createdb forest-service-prototype
 script: py.test
+after_script:
+- npm install -g pa11y-crawl
+- pa11y-crawl --run "cd forestserviceprototype && ./manage.py runserver" --wait 10 --ci http://localhost:8000
