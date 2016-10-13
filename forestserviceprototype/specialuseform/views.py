@@ -32,7 +32,7 @@ def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
             subject='Application Submitted',
             message='Your application for %s has been received, and is #%s. To \
             view its status or make changes, please visit forest-service-\
-            prototype.apps.cloud.gov/submitted/%s'.format(
+            prototype.fr.cloud.gov/submitted/%s'.format(
                 form.instance.event_name,
                 form.instance.permit_id,
                 form.instance.permit_id
@@ -47,7 +47,7 @@ def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
             subject='New application',
             message='There\'s a new application for %s. To see more, and \
             approve or reject it, please visit forest-service-\
-            prototype.apps.cloud.gov/submitted/%s'.format(
+            prototype.fr.cloud.gov/submitted/%s'.format(
                 form.instance.event_name,
                 form.instance.permit_id,
             ),
@@ -79,7 +79,7 @@ def change_application_status(request, permit_id, status):
         subject='Application Status Changed',
         message='The status for your application for %s has been updated to %s. \
         For more information, please visit forest-service-\
-        prototype.apps.cloud.gov/submitted/%s'.format(
+        prototype.fr.cloud.gov/submitted/%s'.format(
             permit.event_name,
             permit.status,
             permit.permit_id
