@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.forms.models import model_to_dict
+from django.core.mail import send_mail, mail_admins
 from .forms import PermitForm
 from .models import Permit
 import logging
@@ -23,7 +24,35 @@ def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
 
     form = PermitForm(request.POST or None, instance=permit)
     if request.POST and form.is_valid():
+        # Save the data to the database
         form.save()
+
+        # Send the user a confirmation message
+        send_mail(
+            subject='Application Submitted',
+            message='Your application for %s has been received, and is #%s. To \
+            view its status or make changes, please visit forest-service-\
+            prototype.apps.cloud.gov/submitted/%s'.format(
+                form.instance.event_name,
+                form.instance.permit_id,
+                form.instance.permit_id
+            ),
+            from_email='no-reply@18f.gov',
+            recipient_list=[form.instance.email],
+            fail_silently=False
+        )
+
+        # Send the admins an email about the new permit
+        mail_admins(
+            subject='New application',
+            message='There\'s a new application for %s. To see more, and \
+            approve or reject it, please visit forest-service-\
+            prototype.apps.cloud.gov/submitted/%s'.format(
+                form.instance.event_name,
+                form.instance.permit_id,
+            ),
+            from_email='no-reply@18f.gov',
+        )
 
         # Save was successful, so redirect to another page
         return redirect('/submitted/'+str(form.instance.permit_id)+'?new=true')
@@ -44,10 +73,25 @@ def change_application_status(request, permit_id, status):
     permit.decision_explanation = decision_explanation
     permit.status = status
     permit.save()
-    # @TODO: Add email notification to permit.email that application status has changed
+
+    # Send an email notification with the status update
+    send_mail(
+        subject='Application Status Changed',
+        message='The status for your application for %s has been updated to %s. \
+        For more information, please visit forest-service-\
+        prototype.apps.cloud.gov/submitted/%s'.format(
+            permit.event_name,
+            permit.status,
+            permit.permit_id
+        ),
+        from_email='no-reply@18f.gov',
+        recipient_list=[permit.email],
+        fail_silently=False
+    )
+
     return HttpResponse( json.dumps({"status": permit.status, "reason": permit.decision_explanation}),
-            content_type="application/json"
-        )
+        content_type="application/json"
+    )
 
 def cancel(request, permit_id):
     permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
