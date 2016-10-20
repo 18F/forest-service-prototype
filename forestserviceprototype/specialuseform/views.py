@@ -30,12 +30,11 @@ def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
         # Send the user a confirmation message
         send_mail(
             subject='Application Submitted',
-            message='Your application for %s has been received, and is #%s. To \
-            view its status or make changes, please visit forest-service-\
-            prototype.fr.cloud.gov/submitted/%s'.format(
+            message='Your application for {0} has been received, and is #{1}. To'
+            'view its status or make changes, please visit forest-service-'
+            'prototype.fr.cloud.gov/submitted/{1}'.format(
                 form.instance.event_name,
                 form.instance.permit_id,
-                form.instance.permit_id
             ),
             from_email='no-reply@18f.gov',
             recipient_list=[form.instance.email],
@@ -47,9 +46,9 @@ def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
         # don't have access to that information until this integrates with SUDS
         send_mail(
             subject='New application',
-            message='There\'s a new application for %s. To see more, and \
-            approve or reject it, please visit forest-service-\
-            prototype.fr.cloud.gov/submitted/%s'.format(
+            message='There\'s a new application for {0}. To see more, and'
+            'approve or reject it, please visit forest-service-'
+            'prototype.fr.cloud.gov/submitted/{1}'.format(
                 form.instance.event_name,
                 form.instance.permit_id,
             ),
