@@ -43,7 +43,9 @@ def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
         )
 
         # Send the admins an email about the new permit
-        mail_admins(
+        # TODO: The recipient(s) will vary based on the specific forest, but we
+        # don't have access to that information until this integrates with SUDS
+        send_mail(
             subject='New application',
             message='There\'s a new application for %s. To see more, and \
             approve or reject it, please visit forest-service-\
@@ -51,6 +53,9 @@ def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
                 form.instance.event_name,
                 form.instance.permit_id,
             ),
+            from_email='no-reply@18f.gov',
+            recipient_list=[],
+            fail_silently=False
         )
 
         # Save was successful, so redirect to another page
