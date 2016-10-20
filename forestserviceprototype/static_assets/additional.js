@@ -43,7 +43,7 @@ $(document).ready(function(){
     }
   });
 
-  $('#application-submit button:submit').mousedown(function(){
+  $('button:submit').mousedown(function(){
     for(key in fieldMapping){
       $('#'+fieldMapping[key]).prop('disabled', false);
     }
