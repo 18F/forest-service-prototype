@@ -51,7 +51,6 @@ def submit(request, permit_id=None, template_name='specialuseform/submit.html'):
                 form.instance.event_name,
                 form.instance.permit_id,
             ),
-            from_email='no-reply@18f.gov',
         )
 
         # Save was successful, so redirect to another page
