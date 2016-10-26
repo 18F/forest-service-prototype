@@ -13,8 +13,7 @@ before_script:
 script: py.test
 after_script:
 - npm install -g pa11y-crawl
-- pa11y-crawl --run "cd forestserviceprototype && ./manage.py runserver" --wait 10
-  --ci http://localhost:8000
+- pa11y-crawl --run "cd forestserviceprototype && ./manage.py runserver" --wait 10 --ci http://localhost:8000
 before_deploy:
 - export PATH=$HOME:$PATH
 - travis_retry curl -L -o $HOME/cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
