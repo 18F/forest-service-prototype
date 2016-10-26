@@ -1,0 +1,26 @@
+#! /env/bin bash
+
+set -e
+
+API="https://api.fr.cloud.gov"
+ORG="gsa-acq-proto"
+SPACE=$1
+
+if [ $# -ne 1 ]; then
+  echo "Usage: deploy <space>"
+  exit
+fi
+
+if [ $SPACE = 'testing' ]; then
+  NAME="forest-service-prototype"
+  MANIFEST="manifest.yml"
+# elif [ $SPACE = 'production' ]; then
+#   NAME="forest-service-prototype"
+#   MANIFEST="manifest.yml"
+else
+  echo "Unknown space: $SPACE"
+  exit
+fi
+
+cf login --a $API --u $CF_USERNAME --p $CF_PASSWORD --o $ORG -s $SPACE
+cf zero-downtime-push $NAME -f $MANIFEST
