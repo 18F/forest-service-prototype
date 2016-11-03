@@ -1,0 +1,11 @@
+applications:
+- name: forest-service-prototype
+  instances: 1
+  memory: 512M
+  disk_quota: 1024M
+  routes:
+  - route: forest-service-prototype.fr.cloud.gov
+  buildpack: python_buildpack
+  services:
+  - forest-service-prototype-psql
+  stack: cflinuxfs2

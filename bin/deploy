@@ -11,9 +11,9 @@ if [ $# -ne 1 ]; then
   exit
 fi
 
-if [ $SPACE = 'testing' ]; then
+if [ $SPACE = 'staging' ]; then
   NAME="forest-service-prototype"
-  MANIFEST="manifest.yml"
+  MANIFEST="manifest-staging.yml"
 # elif [ $SPACE = 'production' ]; then
 #   NAME="forest-service-prototype"
 #   MANIFEST="manifest.yml"
