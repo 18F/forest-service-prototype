@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/18F/forest-service-prototype.svg?branch=develop)](https://travis-ci.org/18F/forest-service-prototype)
+[![Code Climate](https://codeclimate.com/github/18F/forest-service-prototype/badges/gpa.svg)](https://codeclimate.com/github/18F/forest-service-prototype)
+[![Test Coverage](https://codeclimate.com/github/18F/forest-service-prototype/badges/coverage.svg)](https://codeclimate.com/github/18F/forest-service-prototype/coverage)
+[![Accessibility](https://continua11y.18f.gov/18F/forest-service-prototype.svg?branch=develop)](https://continua11y.18f.gov/18F/forest-service-prototype)
+
 # Forest Service Prototype
 This is a Django application to test out an online permit of the non-commercial group use Forest Service permit.
 
