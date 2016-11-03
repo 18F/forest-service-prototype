@@ -10,6 +10,8 @@ Pillow
 pip-tools
 psycopg2
 pytest
+pytest-cov
+pytest-django
 pytz
 requests
 whitenoise
