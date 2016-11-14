@@ -3,8 +3,13 @@ This is a Django application to test out an online permit of the non-commercial 
 
 ## Guiding documents
 
-This non-commercial group use permit prototype is being developed as part of initial, discovery research for a broader Forest Service ePermitting project. Read more in the [discovery plan](https://github.com/18F/forest-service-prototype/raw/master/docs/discovery-plan.pdf).
+This non-commercial group use permit prototype is being developed as part of initial, discovery research for a broader Forest Service ePermitting project. Read more in the [discovery plan](https://github.com/18F/forest-service-prototype/raw/master/docs/discovery-plan.pdf). 
 
+As of November 9, we have completed our first round of discovery research on this prototype. Read the [findings and reccomendations](https://github.com/18F/forest-service-prototype/raw/master/docs/round1-findings-reccomendations.pdf) from our first round of feedback sessions on this prototype (none of the changes have been implemented yet). 
+
+We are now conducting additional research on Christmas tree and outfitter/guide permits, as described in the [discovery plan](https://github.com/18F/forest-service-prototype/raw/master/docs/discovery-plan.pdf).
+
+### Background
 In general, this prototype is driven by the goals, users and features set forward at a special uses permitting kick-off workshop. Read more in the [special uses workshop summary](https://github.com/18F/forest-service-prototype/raw/master/docs/special-uses-read-out.pdf). In a few weeks, we will kick off a similar discovery effort for Christmas tree permits. Read more in the [Christmas tree workshop summary](https://github.com/18F/forest-service-prototype/raw/master/docs/christmas-tree-read-out.pdf).
 
 For the clearest view of issue priorities and status, check [this Waffle board](https://waffle.io/18F/forest-service-prototype).

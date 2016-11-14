@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
+from .forms import PermitForm
+from .models import Permit
 from django.forms.models import model_to_dict
 from django.core.mail import send_mail, mail_admins
 from .forms import PermitForm
@@ -9,7 +11,6 @@ import logging
 import json
 
 # Create your views here.
-logger = logging.getLogger(__name__)
 
 def home(request):
     return render(request, "specialuseform/home.html")

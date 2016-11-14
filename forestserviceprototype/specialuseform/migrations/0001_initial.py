@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Permit',
             fields=[
-                ('permit_id', models.AutoField(primary_key=True, serialize=False)),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('event_name', models.CharField(max_length=250)),
                 ('organizer_address_1', models.CharField(max_length=250)),
                 ('organizer_address_2', models.CharField(max_length=250)),
