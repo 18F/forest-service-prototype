@@ -1,6 +1,27 @@
 sudo: false
 language: python
 python:
-  - "3.5"
-install: pip install tox-travis
-script: tox
+- '3.5'
+addons:
+  postgresql: '9.3'
+env:
+  global:
+  - CF_USERNAME=gsa-acq-proto_deployer
+  - secure: Oe1nkjWAlCsEAs57YyH+f6goqWmojrfWMiZeFWm8F0nMBunRN9PjHyNs3InTVMjEXj8cfBbC0XPiUU3EXEGdy+uOextmoILY6r15l82Xr+0X8Zmu/wMGXrLMgM9rSOOM6XAijXj/wvfYJVaAP/sLJPliUocQiM+P/4+BnfnT4KcUesabDPTmSC1FXn9AQ7FcjMuagtWq9CXLNtlDhEuD7eGyZg4NXySnvk8Ev22BuIUmjUznmyv6v/ciN6sPm888mO8wyanHqnYM9AYE5vBzLXhSw/EsEBgJlinzsQ0DahiXlnTvi5oCJU/hJk0rS/5Kh/WXIvzGA4fXQ38QCS6HeIz7WTvfxykCw5+nmBq8AbV8DC0QrAh6FfnNZEYRyonw+sjjXIGXMxJxUGMHJ/Tu1PkrblnBDGBNKzB+IV0u8BFsClY0YcGL2Tgjz3Xtqje3ZJFwT2wwSkpWEDON000HPiEmmmRz370UxDPxFESUlDHX98GT8FLOkdAH+oGIxX2BK5UVO14VCtnwtpywYikhzuaFs+AXTFP6to21Yh3Lnk5fO7kQIwYHo5OyXLjWf5VIwZUB/nNnTWO2bGEc+kUzFViaxcLjlA17JLoBzVkuz269PlrtyA1euOqhViOzrNzhroB9alJtpqwZnDOGAXhuqV2Qd/xuu+yvTCwwGtzFzxE=
+before_script:
+- createdb forest-service-prototype
+script: py.test
+after_script:
+- npm install -g pa11y-crawl
+- pa11y-crawl --run "cd forestserviceprototype && ./manage.py runserver" --wait 10 --ci http://localhost:8000
+before_deploy:
+- export PATH=$HOME:$PATH
+- travis_retry curl -L -o $HOME/cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
+- tar xzvf $HOME/cf.tgz -C $HOME
+- cf install-plugin autopilot -f -r CF-Community
+deploy:
+- provider: script
+  script: "./bin/deploy staging"
+  skip_cleanup: true
+  on:
+    branch: develop
