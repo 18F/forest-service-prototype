@@ -28,8 +28,8 @@ mkvirtualenv forest-service-prototype
 pip install -r requirements.txt
 createdb forest-service-prototype
 cd forestserviceprototype
-./manage.py migrate
-./manage.py runserver
+forestserviceprototype/manage.py migrate
+forestserviceprototype/manage.py runserver
 ```
 
 The app should now be running at http://localhost:8000.
