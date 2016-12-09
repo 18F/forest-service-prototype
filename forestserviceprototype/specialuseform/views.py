@@ -27,11 +27,16 @@ def submit(request, permit_id=None,
         submit_button_text = 'Submit Your Application'
 
     form = PermitForm(request.POST or None, instance=permit)
+    print(form.data)
     if request.POST and form.is_valid():
         # Save the data to the database
         form.save()
 
         # Send the user a confirmation message
+        if form.instance.email:
+            recipient = [form.instance.email]
+        else:
+            recipient = []
         send_mail(
             subject='Application Submitted',
             message='Your application for {0} has been received, and is #{1}. '
@@ -41,7 +46,7 @@ def submit(request, permit_id=None,
                 form.instance.permit_id,
             ),
             from_email='no-reply@18f.gov',
-            recipient_list=[form.instance.email],
+            recipient_list=recipient,
             fail_silently=False
         )
 
