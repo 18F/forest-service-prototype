@@ -27,7 +27,6 @@ def submit(request, permit_id=None,
         submit_button_text = 'Submit Your Application'
 
     form = PermitForm(request.POST or None, instance=permit)
-    print(form.data)
     if request.POST and form.is_valid():
         # Save the data to the database
         form.save()
