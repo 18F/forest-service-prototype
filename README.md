@@ -34,6 +34,12 @@ cd forestserviceprototype
 
 The app should now be running at http://localhost:8000.
 
+To generate some data for development:
+
+```
+./manage.py create_permits
+```
+
 ## Contributing
 
 Please read through our [contributing guidelines](CONTRIBUTING.md). These guidelines are directions for opening issues and submitting pull requests, and they also detail the coding and design standards we follow.
