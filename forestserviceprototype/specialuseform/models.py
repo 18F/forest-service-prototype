@@ -10,29 +10,38 @@ class Permit(models.Model):
         ('needs_approval', 'Needs Approval'),
         ('approved', 'Approved'),
         ('in_review', 'In Review'),
-        ('not_approved', 'Not Approved')
+        ('not_approved', 'Not Approved'),
+        ('user_cancelled', 'User Cancelled'),
     )
 
+    permit_id = models.AutoField(primary_key=True)
     event_name = models.CharField(
         max_length=250,
         help_text='The name of the event'
     )
-    organizer_address_1 = models.CharField(max_length=250)
-    organizer_address_2 = models.CharField(max_length=250)
+    organizer_address_1 = models.CharField(
+        max_length=250
+    )
+    organizer_address_2 = models.CharField(
+        max_length=250,
+        blank=True,
+    )
     city = models.CharField(
         max_length=250
     )
-    state = localflavor.USStateField(
-        default="OH"
-    )
+    state = localflavor.USStateField()
     zipcode = localflavor.USZipCodeField()
     phone_daytime = localflavor.PhoneNumberField()
     phone_evening = localflavor.PhoneNumberField(
         blank=True
     )
+    email = models.EmailField(
+        blank=True
+    )
     description = models.TextField()
     location = models.CharField(
-        max_length=250)
+        max_length=250
+    )
     participant_number = models.IntegerField(
         verbose_name='Number of Participants',
         help_text='This is the number of people who will directly participate '
