@@ -4,6 +4,7 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
+bandit==1.3.0
 click==6.6                # via pip-tools
 codeclimate-test-reporter==0.2.0
 coverage==4.2             # via codeclimate-test-reporter, pytest-cov
@@ -15,7 +16,10 @@ django-localflavor==1.3
 Django==1.10.2            # via django-localflavor
 enum34==1.1.6             # via django-enumfields
 first==2.0.1              # via pip-tools
+gitdb2==2.0.0             # via gitpython
+GitPython==2.1.1          # via bandit
 markdown==2.6.7
+pbr==1.10.0               # via stevedore
 Pillow==3.4.1
 pip-tools==1.7.0
 psycopg2==2.6.2
@@ -24,8 +28,11 @@ pytest-cov==2.4.0
 pytest-django==3.1.2
 pytest==3.0.3
 pytz==2016.7
+PyYAML==3.12              # via bandit
 requests==2.11.1
-six==1.10.0               # via django-enumfields, pip-tools
+six==1.10.0               # via bandit, django-enumfields, pip-tools, stevedore
+smmap2==2.0.1             # via gitdb2
+stevedore==1.19.1         # via bandit
 webob==1.6.1              # via wsgi-basic-auth
 whitenoise==3.2.2
 wsgi-basic-auth==1.0.4

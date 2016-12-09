@@ -12,6 +12,7 @@ before_script:
 - createdb forest-service-prototype
 script:
 - pytest --cov=forestserviceprototype --cov=specialuseform
+- bandit -r .
 after_script:
 - npm install -g pa11y-crawl
 - pa11y-crawl --run "cd forestserviceprototype && ./manage.py runserver" --wait 10 --ci http://localhost:8000

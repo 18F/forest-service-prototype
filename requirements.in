@@ -1,3 +1,4 @@
+bandit
 codeclimate-test-reporter
 dj-database-url
 django-enumfields
