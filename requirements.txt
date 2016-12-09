@@ -15,6 +15,8 @@ django-form-utils==1.0.3
 django-localflavor==1.3
 django==1.10.4
 enum34==1.1.6             # via django-enumfields
+factory-boy==2.7.0
+fake-factory==0.7.2       # via factory-boy
 first==2.0.1              # via pip-tools
 gitdb2==2.0.0             # via gitpython
 gitpython==2.1.1          # via bandit
@@ -27,10 +29,11 @@ py==1.4.31                # via pytest
 pytest-cov==2.4.0
 pytest-django==3.1.2
 pytest==3.0.5
+python-dateutil==2.6.0    # via fake-factory
 pytz==2016.10
 pyyaml==3.12              # via bandit
 requests==2.12.3
-six==1.10.0               # via bandit, django-enumfields, pip-tools, stevedore
+six==1.10.0               # via bandit, django-enumfields, fake-factory, pip-tools, python-dateutil, stevedore
 smmap2==2.0.1             # via gitdb2
 stevedore==1.19.1         # via bandit
 webob==1.6.3              # via wsgi-basic-auth

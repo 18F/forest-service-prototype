@@ -21,8 +21,7 @@ def test_form():
         'permit_holder_address_1': '456 User Avenue',
         'permit_holder_city': 'Testville',
         'permit_holder_state': 'CO',
-        'permit_holder_zipcode': 54321,
-        'email': 'tester@test.gov'
+        'permit_holder_zipcode': 54321
     }
     form = PermitForm(data=form_data)
     assert form.is_valid()

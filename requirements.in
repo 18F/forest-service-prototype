@@ -6,6 +6,7 @@ django-floppyforms
 django-form-utils
 django-localflavor
 Django
+factory_boy
 markdown
 Pillow
 pip-tools
