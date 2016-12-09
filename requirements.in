@@ -5,7 +5,7 @@ django-enumfields
 django-floppyforms
 django-form-utils
 django-localflavor
-Django>=1.10,<1.11
+Django
 markdown
 Pillow
 pip-tools
