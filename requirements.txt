@@ -5,6 +5,8 @@
 #    pip-compile --output-file requirements.txt requirements.in
 #
 click==6.6                # via pip-tools
+codeclimate-test-reporter==0.2.0
+coverage==4.2             # via codeclimate-test-reporter, pytest-cov
 dj-database-url==0.4.1
 django-enumfields==0.8.2
 django-floppyforms==1.7.0
@@ -18,6 +20,8 @@ Pillow==3.4.1
 pip-tools==1.7.0
 psycopg2==2.6.2
 py==1.4.31                # via pytest
+pytest-cov==2.4.0
+pytest-django==3.1.2
 pytest==3.0.3
 pytz==2016.7
 requests==2.11.1

@@ -1,3 +1,4 @@
+codeclimate-test-reporter
 dj-database-url
 django-enumfields
 django-floppyforms
@@ -9,6 +10,8 @@ Pillow
 pip-tools
 psycopg2
 pytest
+pytest-django
+pytest-cov
 pytz
 requests
 whitenoise
