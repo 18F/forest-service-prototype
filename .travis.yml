@@ -10,9 +10,9 @@ env:
   - secure: Oe1nkjWAlCsEAs57YyH+f6goqWmojrfWMiZeFWm8F0nMBunRN9PjHyNs3InTVMjEXj8cfBbC0XPiUU3EXEGdy+uOextmoILY6r15l82Xr+0X8Zmu/wMGXrLMgM9rSOOM6XAijXj/wvfYJVaAP/sLJPliUocQiM+P/4+BnfnT4KcUesabDPTmSC1FXn9AQ7FcjMuagtWq9CXLNtlDhEuD7eGyZg4NXySnvk8Ev22BuIUmjUznmyv6v/ciN6sPm888mO8wyanHqnYM9AYE5vBzLXhSw/EsEBgJlinzsQ0DahiXlnTvi5oCJU/hJk0rS/5Kh/WXIvzGA4fXQ38QCS6HeIz7WTvfxykCw5+nmBq8AbV8DC0QrAh6FfnNZEYRyonw+sjjXIGXMxJxUGMHJ/Tu1PkrblnBDGBNKzB+IV0u8BFsClY0YcGL2Tgjz3Xtqje3ZJFwT2wwSkpWEDON000HPiEmmmRz370UxDPxFESUlDHX98GT8FLOkdAH+oGIxX2BK5UVO14VCtnwtpywYikhzuaFs+AXTFP6to21Yh3Lnk5fO7kQIwYHo5OyXLjWf5VIwZUB/nNnTWO2bGEc+kUzFViaxcLjlA17JLoBzVkuz269PlrtyA1euOqhViOzrNzhroB9alJtpqwZnDOGAXhuqV2Qd/xuu+yvTCwwGtzFzxE=
 before_script:
 - createdb forest-service-prototype
-- ./manage.py collectstatic --noinput -v 0
+- cd forestserviceprototype && ./manage.py collectstatic --noinput -v 0
 script:
-- cd forestserviceprototype && pytest --cov=forestserviceprototype --cov=specialuseform
+- pytest --cov=forestserviceprototype --cov=specialuseform
 - cd .. && bandit -r .
 after_script:
 - npm install -g pa11y-crawl
