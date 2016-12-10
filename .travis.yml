@@ -11,6 +11,7 @@ env:
 before_script:
 - createdb forest-service-prototype
 script:
+- cd forestserviceprototype
 - pytest --cov=forestserviceprototype --cov=specialuseform
 - bandit -r .
 after_script:
