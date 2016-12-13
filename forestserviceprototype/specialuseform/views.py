@@ -5,8 +5,6 @@ from .forms import PermitForm
 from .models import Permit
 from django.forms.models import model_to_dict
 from django.core.mail import send_mail, mail_admins
-from .forms import PermitForm
-from .models import Permit
 import logging
 import json
 
