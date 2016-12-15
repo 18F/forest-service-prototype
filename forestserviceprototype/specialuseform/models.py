@@ -19,31 +19,31 @@ class Permit(models.Model):
         help_text='The name of the event',
         blank=False
     )
-    organizer_address_1 = models.CharField(
+    applicant_address_1 = models.CharField(
         max_length=250,
         blank=False,
     )
-    organizer_address_2 = models.CharField(
+    applicant_address_2 = models.CharField(
         max_length=250,
         blank=True,
     )
-    city = models.CharField(
+    applicant_city = models.CharField(
         max_length=250,
         blank=False,
     )
-    state = localflavor.USStateField(
+    applicant_state = localflavor.USStateField(
         blank=False,
     )
-    zipcode = localflavor.USZipCodeField(
+    applicant_zipcode = localflavor.USZipCodeField(
         blank=False,
     )
-    phone_daytime = localflavor.PhoneNumberField(
+    applicant_phone_daytime = localflavor.PhoneNumberField(
         blank=False,
     )
-    phone_evening = localflavor.PhoneNumberField(
+    applicant_phone_evening = localflavor.PhoneNumberField(
         blank=True,
     )
-    email = models.EmailField(
+    applicant_email = models.EmailField(
         blank=True,
     )
     description = models.TextField(
