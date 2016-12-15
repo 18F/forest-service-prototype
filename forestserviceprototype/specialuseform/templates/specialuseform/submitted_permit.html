@@ -6,7 +6,7 @@
     <div class="usa-alert usa-alert-success">
       <div class="usa-alert-body" role="alert">
         <h3 class="usa-alert-heading">Application Submitted Successfully</h3>
-        <p class="usa-alert-text">Application #{{ permit.permit_id }}: {{ permit.event_name }} is in the queue.</p>
+        <p class="usa-alert-text">Application #{{ permit.id }}: {{ permit.event_name }} is in the queue.</p>
       </div>
     </div>
 {% endif %}
@@ -15,12 +15,12 @@
 
   {% if user.is_authenticated %}
   <div id="application-review">
-  <form action="{% url 'change-application' permit.permit_id 'approved' %}" method="post" id="approve-form">
+  <form action="{% url 'change-application' permit.id 'approved' %}" method="post" id="approve-form">
     {% csrf_token %}
     <button type="submit" name="approve">Approve application</button>
   </form>
 
-  <form action="{% url 'change-application' permit.permit_id 'not_approved' %}" method="post" id="deny-form">
+  <form action="{% url 'change-application' permit.id 'not_approved' %}" method="post" id="deny-form">
     {% csrf_token %}
     <button type="submit" name="deny">Deny application</button>
     <span class="usa-input-error-message" id="deny-error-message" role="alert"></span>
@@ -36,11 +36,11 @@
     Please review your information to make sure it is correct.</p>
     {% if not user.is_authenticated %}
       {% if permit.status == 'needs_approval' %}
-        <a href="{% url 'edit' permit.permit_id %}"><button>Edit Permit Information</button></a>
-        <a href="{% url 'cancel' permit.permit_id %}"><button>Cancel Application</button></a>
+        <a href="{% url 'edit' permit.id %}"><button>Edit Permit Information</button></a>
+        <a href="{% url 'cancel' permit.id %}"><button>Cancel Application</button></a>
       {% endif %}
       {% if permit.status == 'approved' %}
-        <a href="{% url 'print_permit' permit.permit_id %}"><button>Print Application</button></a>
+        <a href="{% url 'print_permit' permit.id %}"><button>Print Application</button></a>
       {% endif %}
     {% endif %}
   <table>

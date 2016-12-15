@@ -49,7 +49,7 @@ def test_submit_post(rf):
 @pytest.mark.django_db
 def test_edit_view(rf):
     permit = PermitFactory()
-    request = rf.get('/submit/'+str(permit.permit_id))
+    request = rf.get('/submit/'+str(permit.id))
     response = views.submit(request)
     assert response.status_code == 200
 
@@ -58,12 +58,12 @@ def test_edit_view(rf):
 def test_change_status(rf):
     permit = PermitFactory()
     request = rf.post(
-        '/change/'+str(permit.permit_id)+'/approved/',
+        '/change/'+str(permit.id)+'/approved/',
         {'deny_reason': 'dunno'}
     )
     response = views.change_application_status(
         request,
-        permit_id=permit.permit_id,
+        id=permit.id,
         status='approved'
     )
     assert response.status_code == 200

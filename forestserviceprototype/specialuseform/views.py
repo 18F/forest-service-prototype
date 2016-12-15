@@ -15,10 +15,10 @@ def home(request):
     return render(request, "specialuseform/home.html")
 
 
-def submit(request, permit_id=None,
+def submit(request, id=None,
            template_name='specialuseform/submit.html'):
-    if permit_id:
-        permit = get_object_or_404(Permit, permit_id=permit_id)
+    if id:
+        permit = get_object_or_404(Permit, id=id)
         submit_button_text = 'Save Changes'
     else:
         permit = Permit()
@@ -40,7 +40,7 @@ def submit(request, permit_id=None,
             'To view its status or make changes, please visit forest-service-'
             'prototype.fr.cloud.gov/submitted/{1}'.format(
                 form.instance.event_name,
-                form.instance.permit_id,
+                form.instance.id,
             ),
             from_email='no-reply@18f.gov',
             recipient_list=recipient,
@@ -56,7 +56,7 @@ def submit(request, permit_id=None,
             'approve or reject it, please visit forest-service-'
             'prototype.fr.cloud.gov/submitted/{1}'.format(
                 form.instance.event_name,
-                form.instance.permit_id,
+                form.instance.id,
             ),
             from_email='no-reply@18f.gov',
             recipient_list=[],
@@ -64,16 +64,16 @@ def submit(request, permit_id=None,
         )
 
         # Save was successful, so redirect to another page
-        return redirect('/submitted/'+str(form.instance.permit_id)+'?new=true')
+        return redirect('/submitted/'+str(form.instance.id)+'?new=true')
 
     return render(request, template_name, {
         'form': form, 'submit_text': submit_button_text
     })
 
 
-def submitted_permit(request, permit_id):
+def submitted_permit(request, id):
     check_status = False if request.GET.get('new') else True
-    permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
+    permit = get_object_or_404(Permit.objects.filter(id=id))
     permit_dict = PermitForm(data=model_to_dict(permit))
     return render(request,
                   "specialuseform/submitted_permit.html",
@@ -84,9 +84,9 @@ def submitted_permit(request, permit_id):
                   )
 
 
-def change_application_status(request, permit_id, status):
+def change_application_status(request, id, status):
     decision_explanation = request.POST.get('deny_reason')
-    permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
+    permit = get_object_or_404(Permit.objects.filter(id=id))
     permit.decision_explanation = decision_explanation
     permit.status = status
     permit.save()
@@ -99,7 +99,7 @@ def change_application_status(request, permit_id, status):
         prototype.fr.cloud.gov/submitted/%s'.format(
             permit.event_name,
             permit.status,
-            permit.permit_id
+            permit.id
         ),
         from_email='no-reply@18f.gov',
         recipient_list=[permit.email],
@@ -113,16 +113,16 @@ def change_application_status(request, permit_id, status):
     return HttpResponse(json_response, content_type="application/json")
 
 
-def cancel(request, permit_id):
-    permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
+def cancel(request, id):
+    permit = get_object_or_404(Permit.objects.filter(id=id))
     permit.status = 'user_cancelled'
     permit.save()
     return render(request, 'specialuseform/cancel_permit.html',
                   {'permit': permit})
 
 
-def print_permit(request, permit_id):
-    permit = get_object_or_404(Permit.objects.filter(permit_id=permit_id))
+def print_permit(request, id):
+    permit = get_object_or_404(Permit.objects.filter(id=id))
     return render(request, 'specialuseform/print_permit.html',
                   {'permit': permit})
 
