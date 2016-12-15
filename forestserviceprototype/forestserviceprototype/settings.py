@@ -32,13 +32,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'specialuseform',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'specialuseform',
 
     'floppyforms',
     'localflavor',
@@ -83,6 +84,12 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 DATABASES = {'default': dj_database_url.config(
         default="postgres://localhost/forest-service-prototype"
         )}
+
+
+# Authentication
+
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/'
 
 
 # Internationalization
