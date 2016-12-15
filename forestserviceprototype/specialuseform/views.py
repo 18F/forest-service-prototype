@@ -130,7 +130,7 @@ def print_permit(request, id):
 # @todo: Fix redirect so users don't get stuck in admin screen. See #7.
 @login_required(login_url='/admin/')
 def applications(request):
-    permits = NonCommercialUsePermit.objects.all().order_by('-status', 'start_date', 'created')
+    permits = NonCommercialUsePermit.objects.all().order_by('-permit_status', 'start_date', 'created')
     return render(request, "specialuseform/applications.html", {
         'permits': permits
         })
