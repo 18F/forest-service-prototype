@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from .forms import PermitForm
-from .models import Permit
+from .forms import NonCommercialUsePermitForm
+from .models import NonCommercialUsePermit
 from django.forms.models import model_to_dict
 from django.core.mail import send_mail, mail_admins
 import logging
@@ -18,20 +18,20 @@ def home(request):
 def submit(request, id=None,
            template_name='specialuseform/submit.html'):
     if id:
-        permit = get_object_or_404(Permit, id=id)
+        permit = get_object_or_404(NonCommercialUsePermit, id=id)
         submit_button_text = 'Save Changes'
     else:
-        permit = Permit()
+        permit = NonCommercialUsePermit()
         submit_button_text = 'Submit Your Application'
 
-    form = PermitForm(request.POST or None, instance=permit)
+    form = NonCommercialUsePermitForm(request.POST or None, instance=permit)
     if request.POST and form.is_valid():
         # Save the data to the database
         form.save()
 
         # Send the user a confirmation message
-        if form.instance.email:
-            recipient = [form.instance.email]
+        if form.instance.applicant_email:
+            recipient = [form.instance.applicant_email]
         else:
             recipient = []
         send_mail(
@@ -73,8 +73,8 @@ def submit(request, id=None,
 
 def submitted_permit(request, id):
     check_status = False if request.GET.get('new') else True
-    permit = get_object_or_404(Permit.objects.filter(id=id))
-    permit_dict = PermitForm(data=model_to_dict(permit))
+    permit = get_object_or_404(NonCommercialUsePermit.objects.filter(id=id))
+    permit_dict = NonCommercialUsePermitForm(data=model_to_dict(permit))
     return render(request,
                   "specialuseform/submitted_permit.html",
                   {'permit': permit,
@@ -86,7 +86,7 @@ def submitted_permit(request, id):
 
 def change_application_status(request, id, status):
     decision_explanation = request.POST.get('deny_reason')
-    permit = get_object_or_404(Permit.objects.filter(id=id))
+    permit = get_object_or_404(NonCommercialUsePermit.objects.filter(id=id))
     permit.decision_explanation = decision_explanation
     permit.status = status
     permit.save()
@@ -102,7 +102,7 @@ def change_application_status(request, id, status):
             permit.id
         ),
         from_email='no-reply@18f.gov',
-        recipient_list=[permit.email],
+        recipient_list=[permit.applicant_email],
         fail_silently=False
     )
 
@@ -114,7 +114,7 @@ def change_application_status(request, id, status):
 
 
 def cancel(request, id):
-    permit = get_object_or_404(Permit.objects.filter(id=id))
+    permit = get_object_or_404(NonCommercialUsePermit.objects.filter(id=id))
     permit.status = 'user_cancelled'
     permit.save()
     return render(request, 'specialuseform/cancel_permit.html',
@@ -122,7 +122,7 @@ def cancel(request, id):
 
 
 def print_permit(request, id):
-    permit = get_object_or_404(Permit.objects.filter(id=id))
+    permit = get_object_or_404(NonCommercialUsePermit.objects.filter(id=id))
     return render(request, 'specialuseform/print_permit.html',
                   {'permit': permit})
 
@@ -130,7 +130,7 @@ def print_permit(request, id):
 # @todo: Fix redirect so users don't get stuck in admin screen. See #7.
 @login_required(login_url='/admin/')
 def applications(request):
-    permits = Permit.objects.all().order_by('-status', 'start_date', 'created')
+    permits = NonCommercialUsePermit.objects.all().order_by('-status', 'start_date', 'created')
     return render(request, "specialuseform/applications.html", {
         'permits': permits
         })

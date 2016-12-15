@@ -1,19 +1,19 @@
 import factory
 from datetime import datetime, timedelta, tzinfo
 from dateutil.tz import tzlocal
-from specialuseform.models import Permit
+from specialuseform.models import NonCommercialUsePermit
 
 
 class PermitFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = Permit
+        model = NonCommercialUsePermit
 
     event_name = factory.Faker('catch_phrase')
-    organizer_address_1 = factory.Faker('street_address')
-    city = factory.Faker('city')
-    state = factory.Faker('state_abbr')
-    zipcode = factory.Faker('zipcode')
-    phone_daytime = factory.Faker('phone_number')
+    applicant_address_1 = factory.Faker('street_address')
+    applicant_city = factory.Faker('city')
+    applicant_state = factory.Faker('state_abbr')
+    applicant_zipcode = factory.Faker('zipcode')
+    applicant_phone_daytime = factory.Faker('phone_number')
     description = factory.Faker('paragraph')
     location = factory.Faker('word')
     participant_number = factory.Faker('random_digit')

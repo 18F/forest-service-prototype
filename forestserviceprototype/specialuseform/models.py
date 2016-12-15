@@ -14,11 +14,6 @@ class Permit(models.Model):
         ('user_cancelled', 'User Cancelled'),
     )
 
-    event_name = models.CharField(
-        max_length=250,
-        help_text='The name of the event',
-        blank=False
-    )
     applicant_address_1 = models.CharField(
         max_length=250,
         blank=False,
@@ -45,36 +40,6 @@ class Permit(models.Model):
     )
     applicant_email = models.EmailField(
         blank=True,
-    )
-    description = models.TextField(
-        blank=False,
-    )
-    location = models.CharField(
-        max_length=250,
-        blank=False,
-    )
-    participant_number = models.IntegerField(
-        verbose_name='Number of Participants',
-        help_text='This is the number of people who will directly participate '
-                  'in the event.',
-        blank=False,
-    )
-    spectator_number = models.IntegerField(
-        verbose_name='Number of Spectators',
-        help_text='If your event will have spectators (such as at a sporting '
-                  'event), please note how many additional people will be '
-                  'spectators',
-        blank=True,
-    )
-    start_date = models.DateTimeField(
-        default=timezone.now,
-        help_text='Format: MM/DD/YYYY',
-        blank=False,
-    )
-    end_date = models.DateTimeField(
-        default=timezone.now,
-        help_text='Format: MM/DD/YYYY',
-        blank=False,
     )
     permit_holder_name = models.CharField(
         max_length=250,
@@ -160,4 +125,42 @@ class Permit(models.Model):
         return self.event_name
 
     class Meta:
-        pass
+        abstract = True
+
+
+class NonCommercialUsePermit(Permit):
+    event_name = models.CharField(
+        max_length=250,
+        help_text='The name of the event',
+        blank=False
+    )
+    description = models.TextField(
+        blank=False,
+    )
+    location = models.CharField(
+        max_length=250,
+        blank=False,
+    )
+    start_date = models.DateTimeField(
+        default=timezone.now,
+        help_text='Format: MM/DD/YYYY',
+        blank=False,
+    )
+    end_date = models.DateTimeField(
+        default=timezone.now,
+        help_text='Format: MM/DD/YYYY',
+        blank=False,
+    )
+    participant_number = models.IntegerField(
+        verbose_name='Number of Participants',
+        help_text='This is the number of people who will directly participate '
+                  'in the event.',
+        blank=False,
+    )
+    spectator_number = models.IntegerField(
+        verbose_name='Number of Spectators',
+        help_text='If your event will have spectators (such as at a sporting '
+                  'event), please note how many additional people will be '
+                  'spectators',
+        blank=True,
+    )

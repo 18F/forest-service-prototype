@@ -1,13 +1,13 @@
 
 from localflavor.us import forms as localflavor
-from .models import Permit
+from .models import NonCommercialUsePermit
 import floppyforms.__future__ as forms
 from form_utils.forms import BetterModelForm
 
 
-class PermitForm(BetterModelForm):
+class NonCommercialUsePermitForm(BetterModelForm):
     class Meta:
-        model = Permit
+        model = NonCommercialUsePermit
         fieldsets = [
             ('general', {
                 'fields': [

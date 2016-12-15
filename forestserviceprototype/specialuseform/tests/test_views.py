@@ -23,11 +23,11 @@ def test_submit_post(rf):
     from django.core import mail
     request = rf.post('/submit/', data={
         'event_name': 'hi',
-        'organizer_address_1': '123 Forest Lane',
-        'city': 'Treeville',
-        'state': 'CO',
-        'zipcode': 12345,
-        'phone_daytime': '555-555-5555',
+        'applicant_address_1': '123 Forest Lane',
+        'applicant_city': 'Treeville',
+        'applicant_state': 'CO',
+        'applicant_zipcode': 12345,
+        'applicant_phone_daytime': '555-555-5555',
         'description': 'wow. such permit. very event.',
         'location': 'a park',
         'participant_number': 1000,
@@ -39,7 +39,7 @@ def test_submit_post(rf):
         'permit_holder_city': 'Testville',
         'permit_holder_state': 'CO',
         'permit_holder_zipcode': 54321,
-        'email': 'user@notawebsite.gov'
+        'applicant_email': 'user@notawebsite.gov'
     })
     response = views.submit(request)
     assert len(mail.outbox) == 1
