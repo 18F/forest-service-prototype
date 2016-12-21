@@ -163,4 +163,5 @@ class NonCommercialUsePermit(Permit):
                   'event), please note how many additional people will be '
                   'spectators',
         blank=True,
+        null=True,
     )
