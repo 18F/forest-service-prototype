@@ -39,7 +39,7 @@ cd forestserviceprototype
 
 The app should now be running at http://localhost:8000.
 
-To generate some data for development:
+To generate some data from for development:
 
 ```
 ./manage.py create_permits
@@ -66,6 +66,10 @@ echo Django >> requirements.in
 pip-compile --output-file requirements.txt requirements.in
 pip-sync
 ```
+
+### Factories
+
+There are [factories](forestserviceprototype/specialuseform/factories.py) to produce data for existing models. Those factories are used to generate random data for tests or to populate the database during development. While they are random, they are still relatively constrained, and thus shouldn't be considered representative of all of the weird things that humans can try to do. For wackier data, consider using the ["Fuzzy" generators](https://factoryboy.readthedocs.io/en/latest/fuzzy.html) included in `factoryboy` instead of [`Faker`](faker.readthedocs.io/en/latest/).
 
 ## Public domain
 
