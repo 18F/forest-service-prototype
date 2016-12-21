@@ -60,6 +60,7 @@ To run the `pytest` tests:
 
 ```
 cd forestserviceprototype
+./manage.py collectstatic
 pytest
 ```
 
