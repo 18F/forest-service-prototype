@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .forms import NonCommercialUsePermitForm
@@ -37,10 +38,10 @@ def submit(request, id=None,
         send_mail(
             subject='Application Submitted',
             message='Your application for {0} has been received, and is #{1}. '
-            'To view its status or make changes, please visit forest-service-'
-            'prototype.fr.cloud.gov/submitted/{1}'.format(
+            'To view its status or make changes, please visit {2}/submitted/{1}'.format(
                 form.instance.event_name,
                 form.instance.id,
+                get_current_site(request)
             ),
             from_email='no-reply@18f.gov',
             recipient_list=recipient,
@@ -53,10 +54,10 @@ def submit(request, id=None,
         send_mail(
             subject='New application',
             message='There\'s a new application for {0}. To see more, and'
-            'approve or reject it, please visit forest-service-'
-            'prototype.fr.cloud.gov/submitted/{1}'.format(
+            'approve or reject it, please visit {2}/submitted/{1}'.format(
                 form.instance.event_name,
                 form.instance.id,
+                get_current_site(request)
             ),
             from_email='no-reply@18f.gov',
             recipient_list=[],
@@ -94,11 +95,11 @@ def change_application_status(request, id, status):
     # Send an email notification with the status update
     send_mail(
         subject='Application Status Changed',
-        message='The status for your application for %s has been updated to %s. \
-        For more information, please visit forest-service-\
-        prototype.fr.cloud.gov/submitted/%s'.format(
+        message='The status for your application for {0} has been updated to {1}. \
+        For more information, please visit {2}/submitted/{3}'.format(
             permit.event_name,
             permit.status,
+            get_current_site(request),
             permit.id
         ),
         from_email='no-reply@18f.gov',
