@@ -54,6 +54,15 @@ Please read through our [contributing guidelines](CONTRIBUTING.md). These guidel
 Release branch: `master`
 Development branch: `develop`
 
+### Testing
+
+To run the `pytest` tests:
+
+```
+cd forestserviceprototype
+pytest
+```
+
 ### Dependencies
 
 This project uses `pip-tools` to manage dependencies. As a result, developers
