@@ -5,8 +5,8 @@ addons:
   postgresql: '9.3'
 env:
   global:
-  - CF_USERNAME=gsa-acq-proto_deployer
-  - secure: Oe1nkjWAlCsEAs57YyH+f6goqWmojrfWMiZeFWm8F0nMBunRN9PjHyNs3InTVMjEXj8cfBbC0XPiUU3EXEGdy+uOextmoILY6r15l82Xr+0X8Zmu/wMGXrLMgM9rSOOM6XAijXj/wvfYJVaAP/sLJPliUocQiM+P/4+BnfnT4KcUesabDPTmSC1FXn9AQ7FcjMuagtWq9CXLNtlDhEuD7eGyZg4NXySnvk8Ev22BuIUmjUznmyv6v/ciN6sPm888mO8wyanHqnYM9AYE5vBzLXhSw/EsEBgJlinzsQ0DahiXlnTvi5oCJU/hJk0rS/5Kh/WXIvzGA4fXQ38QCS6HeIz7WTvfxykCw5+nmBq8AbV8DC0QrAh6FfnNZEYRyonw+sjjXIGXMxJxUGMHJ/Tu1PkrblnBDGBNKzB+IV0u8BFsClY0YcGL2Tgjz3Xtqje3ZJFwT2wwSkpWEDON000HPiEmmmRz370UxDPxFESUlDHX98GT8FLOkdAH+oGIxX2BK5UVO14VCtnwtpywYikhzuaFs+AXTFP6to21Yh3Lnk5fO7kQIwYHo5OyXLjWf5VIwZUB/nNnTWO2bGEc+kUzFViaxcLjlA17JLoBzVkuz269PlrtyA1euOqhViOzrNzhroB9alJtpqwZnDOGAXhuqV2Qd/xuu+yvTCwwGtzFzxE=
+  - CF_USERNAME=6c319632-cc9c-47c7-bda4-64d6abc4609d
+  - secure: VptomGKDI5KmkEqM0ctzMJLqBUOfsSQBzfcApWR0hqCzmM0+ES69hYemSAFAXqfthZQtq8pEVB9jKHz/UqJLC0bvhfoEAl/avB3ULnMUM0p/oiaVlUDwqRzclh7glTk1bxCEyHSZQ33oxMKXDHQ4EqKY/fevv9uiL9R/3eUANo+MBAH4NAYM0aP+hxV9VvNmFZm7uMFozn4WUJpjO/tKZKuMc1Si0Qa35XKmCZvFts4aTjn3o2yZK35w/EsWCIOofQI3qq9Nio9avKynBg444/wtXdYqBTwl3knkdGQAgr2rpqWQAmCrH+UWZWQzGH7KBrIdPe9hh/BSGP2zpnUQGGxCbw5cUad0VJXC9cnbnHRE5rbRyoQpM50Lr7owUnvqjgZ6QxZGuiVzDoWVjF/4QgMyae28tHq/fIbJh5i89VzoMSYfLu7fBwkQ9g5fmpvkwurqU4BS7n/P0qZRKRI+VRRW7iRJpMEzzHWL/KdPqGEIDtZ6e5cvzJgqrr2dsA/2l1pQ0kBnJ7CYVMeNV2LHL4mWeXFpnR0R97e0KP4sOKALeWx0UGSlnqtsquVczqUeBa/eBjWOs+SNjPUMVxzMpqQKvqA4lLmq3qHelbafbAcwqDbQ75LvPC7Hb34R2cGrtRWWs6ofm7cQcNDV7njLfA4WyIPM3iXfqJPIr/Z7czw=
 before_script:
 - createdb forest-service-prototype
 - cd forestserviceprototype && ./manage.py collectstatic --noinput -v 0
@@ -15,7 +15,8 @@ script:
 - cd .. && bandit -r .
 after_script:
 - npm install -g pa11y-crawl
-- pa11y-crawl --run "cd forestserviceprototype && ./manage.py runserver" --wait 10 --ci http://localhost:8000
+- pa11y-crawl --run "cd forestserviceprototype && ./manage.py runserver" --wait 10
+  --ci http://localhost:8000
 before_deploy:
 - export PATH=$HOME:$PATH
 - travis_retry curl -L -o $HOME/cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
