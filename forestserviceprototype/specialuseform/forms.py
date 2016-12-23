@@ -1,20 +1,21 @@
 
 from localflavor.us import forms as localflavor
-from .models import Permit
+from .models import NonCommercialUsePermit
 import floppyforms.__future__ as forms
 from form_utils.forms import BetterModelForm
 
 
-class PermitForm(BetterModelForm):
+class NonCommercialUsePermitForm(BetterModelForm):
     class Meta:
-        model = Permit
+        model = NonCommercialUsePermit
         fieldsets = [
             ('general', {
                 'fields': [
-                    'event_name', 'organizer_address_1',
-                    'organizer_address_2', 'city', 'state', 'zipcode', 'email',
-                    'phone_daytime', 'phone_evening'],
-                'legend': 'Organizer Information',
+                    'event_name', 'applicant_address_1',
+                    'applicant_address_2', 'applicant_city',
+                    'applicant_state', 'applicant_zipcode', 'applicant_email',
+                    'applicant_phone_daytime', 'applicant_phone_evening'],
+                'legend': 'Applicant Information',
             }),
             ('event_details', {
                 'fields': [

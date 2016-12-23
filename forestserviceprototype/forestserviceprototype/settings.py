@@ -32,13 +32,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'specialuseform',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'specialuseform',
 
     'floppyforms',
     'localflavor',
@@ -85,6 +86,12 @@ DATABASES = {'default': dj_database_url.config(
         )}
 
 
+# Authentication
+
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/'
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -106,7 +113,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "../third-party/uswds-0.12.1"),
+    os.path.join(BASE_DIR, "../third-party/uswds-0.13.1"),
+    os.path.join(BASE_DIR, "../third-party/jquery"),
     os.path.join(BASE_DIR, "static_assets")
 ]
 
@@ -114,8 +122,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Email settings
 
-EMAIL_HOST = "smtp.mandrillapp.com"
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
-EMAIL_PORT = "587"
-EMAIL_USE_TLS = "True"
+if DEBUG is True:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_HOST = "smtp.mandrillapp.com"
+    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+    EMAIL_PORT = "587"
+    EMAIL_USE_TLS = "True"

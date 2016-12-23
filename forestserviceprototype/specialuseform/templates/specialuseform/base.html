@@ -4,19 +4,30 @@
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
       <title>{% block title %}Forest Service Prototype{% endblock %}</title>
+
       <link rel="stylesheet" href="{% static "css/uswds.min.css" %}">
       <link rel="stylesheet" href="{% static "additional.css" %}">
+
+      <link rel="shortcut icon" type="image/x-icon" href="{% static "img/favicons/favicon.ico" %}" />
   </head>
   <body>
-    <div class="usa-grid-full">
-      <div class="usa-width-one-whole">
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/USFS_Logo.svg/965px-USFS_Logo.svg.png" alt="Forest Service Logo" style="height: 100px;float: left;">
-        {% block content %}{% endblock %}
+    <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+    {% include "specialuseform/includes/header.html" %}
+    <div class="usa-overlay"></div>
+    <main id="main-content">
+      <div class="usa-grid">
+        <div class="usa-width-one-full">
+          {% block content %}{% endblock %}
+        </div>
       </div>
-    </div>
+
+    </main>
+    {% include "specialuseform/includes/footer.html" %}
   <script src="{% static "js/uswds.min.js" %}"></script>
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="{% static "js/jquery-3.1.1.min.js" %}"></script>
   <script src="{% static "additional.js" %}"></script>
   </body>
 </html>

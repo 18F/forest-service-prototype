@@ -9,11 +9,11 @@ $(document).ready(function(){
   });
 
   const fieldMapping = {
-    'id_organizer_address_1' : 'id_permit_holder_address_1',
-    'id_organizer_address_2' : 'id_permit_holder_address_2',
-    'id_city' : 'id_permit_holder_city',
-    'id_state' : 'id_permit_holder_state',
-    'id_zipcode' : 'id_permit_holder_zipcode',
+    'id_applicant_address_1' : 'id_permit_holder_address_1',
+    'id_applicant_address_2' : 'id_permit_holder_address_2',
+    'id_applicant_city' : 'id_permit_holder_city',
+    'id_applicant_state' : 'id_permit_holder_state',
+    'id_applicant_zipcode' : 'id_permit_holder_zipcode',
   }
 
   function addEventListener(listener, outputfield){

@@ -1,11 +1,16 @@
+[![Build Status](https://travis-ci.org/18F/forest-service-prototype.svg?branch=develop)](https://travis-ci.org/18F/forest-service-prototype)
+[![Code Climate](https://codeclimate.com/github/18F/forest-service-prototype/badges/gpa.svg)](https://codeclimate.com/github/18F/forest-service-prototype)
+[![Test Coverage](https://codeclimate.com/github/18F/forest-service-prototype/badges/coverage.svg)](https://codeclimate.com/github/18F/forest-service-prototype/coverage)
+
+
 # Forest Service Prototype
 This is a Django application to test out an online permit of the non-commercial group use Forest Service permit.
 
 ## Guiding documents
 
-This non-commercial group use permit prototype is being developed as part of initial, discovery research for a broader Forest Service ePermitting project. Read more in the [discovery plan](https://github.com/18F/forest-service-prototype/raw/master/docs/discovery-plan.pdf). 
+This non-commercial group use permit prototype is being developed as part of initial, discovery research for a broader Forest Service ePermitting project. Read more in the [discovery plan](https://github.com/18F/forest-service-prototype/raw/master/docs/discovery-plan.pdf).
 
-As of November 9, we have completed our first round of discovery research on this prototype. Read the [findings and reccomendations](https://github.com/18F/forest-service-prototype/raw/master/docs/round1-findings-reccomendations.pdf) from our first round of feedback sessions on this prototype (none of the changes have been implemented yet). 
+As of November 9, we have completed our first round of discovery research on this prototype. Read the [findings and reccomendations](https://github.com/18F/forest-service-prototype/raw/master/docs/round1-findings-reccomendations.pdf) from our first round of feedback sessions on this prototype (none of the changes have been implemented yet).
 
 We are now conducting additional research on Christmas tree and outfitter/guide permits, as described in the [discovery plan](https://github.com/18F/forest-service-prototype/raw/master/docs/discovery-plan.pdf).
 
@@ -34,9 +39,47 @@ cd forestserviceprototype
 
 The app should now be running at http://localhost:8000.
 
+To generate some data from for development:
+
+```
+./manage.py create_permits
+```
+
 ## Contributing
 
 Please read through our [contributing guidelines](CONTRIBUTING.md). These guidelines are directions for opening issues and submitting pull requests, and they also detail the coding and design standards we follow.
+
+### Branching
+
+Release branch: `master`
+Development branch: `develop`
+
+### Testing
+
+To run the `pytest` tests:
+
+```
+cd forestserviceprototype
+./manage.py collectstatic
+pytest
+```
+
+### Dependencies
+
+This project uses `pip-tools` to manage dependencies. As a result, developers
+should edit `requirements.in` and not `requirements.txt`.
+
+For example:
+
+```
+echo Django >> requirements.in
+pip-compile --output-file requirements.txt requirements.in
+pip-sync
+```
+
+### Factories
+
+There are [factories](forestserviceprototype/specialuseform/factories.py) to produce data for existing models. Those factories are used to generate random data for tests or to populate the database during development. While they are random, they are still relatively constrained, and thus shouldn't be considered representative of all of the weird things that humans can try to do. For wackier data, consider using the ["Fuzzy" generators](https://factoryboy.readthedocs.io/en/latest/fuzzy.html) included in `factoryboy` instead of [`Faker`](faker.readthedocs.io/en/latest/).
 
 ## Public domain
 
