@@ -26,7 +26,7 @@ SECRET_KEY = 'fzv250w-(5p*frf&kf&t*wx!kh+t4_j2(vn=bm4o=fwhnvtnsx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
