@@ -19,6 +19,29 @@ In general, this prototype is driven by the goals, users and features set forwar
 
 For the clearest view of issue priorities and status, check [this Waffle board](https://waffle.io/18F/forest-service-prototype).
 
+## Docker
+
+This app contains a `Dockerfile` and `docker-compose.yaml` to allow you to
+quickly stand up a development environment without making any changes to your
+local machine.  You will need [Docker](https://www.docker.com/) installed. Once
+you're ready, follow these steps to get going:
+
+```sh
+git clone https://github.com/18f/forest-service-prototype.git
+cd forest-service-prototype
+docker-compose up
+```
+
+This will pull the appropriate images (postgres, python, etc.), install of
+the dependencies into a virtual machine, setup the database, and start the app.
+When it is finished, the app will be available at
+[http://localhost:8000](http://localhost:8000).
+
+> **NOTE:** This will run docker-compose in "attached" mode, meaning your terminal
+> window will not be available to run other tasks while the server is running, and
+> you will see the server's console output.  If you want to run in "detached" mode,
+> just change the `docker-compose` command to `docker-compose up -d`
+
 ## Local Installation
 
 This app is designed to run on Python 3.5.2. `pyenv` is recommended for managing
