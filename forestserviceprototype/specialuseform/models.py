@@ -144,13 +144,13 @@ class NonCommercialUsePermit(Permit):
         blank=False,
     )
     participant_number = models.IntegerField(
-        verbose_name='Number of Participants',
+        verbose_name='Number of participants',
         help_text='This is the number of people who will directly participate '
                   'in the event.',
         blank=False,
     )
     spectator_number = models.IntegerField(
-        verbose_name='Number of Spectators',
+        verbose_name='Number of spectators',
         help_text='If your event will have spectators (such as at a sporting '
                   'event), please note how many additional people will be '
                   'spectators',
