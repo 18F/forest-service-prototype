@@ -96,6 +96,11 @@ class Permit(models.Model):
         verbose_name="Zipcode",
         blank=True,
     )
+    permit_holder_signature_initials = models.CharField(
+        max_length=3,
+        verbose_name="Signature initials",
+        blank=True,
+    )
     created = models.DateTimeField(
         auto_now_add=True,
         blank=False,

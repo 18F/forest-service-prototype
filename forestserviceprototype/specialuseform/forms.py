@@ -39,6 +39,11 @@ class NonCommercialUsePermitForm(BetterModelForm):
                 'legend': 'Secondary Permit Holder Information',
                 'classes': ['permit_holder_fieldset', 'permit_hide']
             }),
+            ('signature', {
+                'fields': [
+                    'permit_holder_signature_initials'],
+                'legend': 'Signature'
+            })
         ]
         widgets = {
             'zipcode': forms.TextInput(attrs={
