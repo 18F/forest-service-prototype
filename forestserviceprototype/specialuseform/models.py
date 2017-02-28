@@ -45,9 +45,6 @@ class Permit(models.Model):
         max_length=250,
         blank=False,
     )
-    permit_holder_signature = models.ImageField(
-        blank=True,
-    )
     permit_holder_address_1 = models.CharField(
         max_length=250,
         verbose_name="Street Address 1",
@@ -74,9 +71,6 @@ class Permit(models.Model):
     permit_holder_2_name = models.CharField(
         max_length=250,
         help_text='Name of Permit Holder',
-        blank=True,
-    )
-    permit_holder_2_signature = models.ImageField(
         blank=True,
     )
     permit_holder_2_address_1 = models.CharField(

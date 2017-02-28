@@ -27,8 +27,7 @@ class NonCommercialUsePermitForm(BetterModelForm):
                 'fields': [
                     'permit_holder_name', 'permit_holder_address_1',
                     'permit_holder_address_2', 'permit_holder_city',
-                    'permit_holder_state', 'permit_holder_zipcode',
-                    'permit_holder_signature'],
+                    'permit_holder_state', 'permit_holder_zipcode'],
                 'legend': 'Permit holders',
                 'classes': ['permit_holder_1_fieldset']
             }),
@@ -36,8 +35,7 @@ class NonCommercialUsePermitForm(BetterModelForm):
                 'fields': [
                     'permit_holder_2_name', 'permit_holder_2_address_1',
                     'permit_holder_2_address_2', 'permit_holder_2_city',
-                    'permit_holder_2_state', 'permit_holder_2_zipcode',
-                    'permit_holder_2_signature'],
+                    'permit_holder_2_state', 'permit_holder_2_zipcode'],
                 'legend': 'Secondary Permit Holder Information',
                 'classes': ['permit_holder_fieldset', 'permit_hide']
             }),
