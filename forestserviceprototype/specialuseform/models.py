@@ -140,12 +140,14 @@ class NonCommercialUsePermit(Permit):
     )
     start_date = models.DateTimeField(
         default=timezone.now,
-        help_text='Format: MM/DD/YYYY',
+        verbose_name='Start date and time',
+        help_text='Format: MM/DD/YYYY HH:MM',
         blank=False,
     )
     end_date = models.DateTimeField(
         default=timezone.now,
-        help_text='Format: MM/DD/YYYY',
+        verbose_name='End date and time',
+        help_text='Format: MM/DD/YYYY HH:MM',
         blank=False,
     )
     participant_number = models.IntegerField(
