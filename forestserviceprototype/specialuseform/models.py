@@ -43,7 +43,6 @@ class Permit(models.Model):
     )
     permit_holder_name = models.CharField(
         max_length=250,
-        help_text='Name of Permit Holder',
         blank=False,
     )
     permit_holder_signature = models.ImageField(
@@ -131,7 +130,6 @@ class Permit(models.Model):
 class NonCommercialUsePermit(Permit):
     event_name = models.CharField(
         max_length=250,
-        help_text='The name of the event',
         blank=False
     )
     description = models.TextField(
