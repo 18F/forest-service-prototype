@@ -88,4 +88,5 @@ class NonCommercialUsePermitForm(BetterModelForm):
             'permit_holder_2_city' : 'City',
             'permit_holder_2_state' : 'State',
             'permit_holder_2_zipcode' : 'ZIP',
+            'permit_holder_signature_initials' : 'Type your initials here as a signature on your application'
         }
