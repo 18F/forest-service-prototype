@@ -43,11 +43,7 @@ class Permit(models.Model):
     )
     permit_holder_name = models.CharField(
         max_length=250,
-        help_text='Name of Permit Holder',
         blank=False,
-    )
-    permit_holder_signature = models.ImageField(
-        blank=True,
     )
     permit_holder_address_1 = models.CharField(
         max_length=250,
@@ -77,9 +73,6 @@ class Permit(models.Model):
         help_text='Name of Permit Holder',
         blank=True,
     )
-    permit_holder_2_signature = models.ImageField(
-        blank=True,
-    )
     permit_holder_2_address_1 = models.CharField(
         max_length=250,
         verbose_name="Street Address 1",
@@ -101,6 +94,11 @@ class Permit(models.Model):
     )
     permit_holder_2_zipcode = localflavor.USZipCodeField(
         verbose_name="Zipcode",
+        blank=True,
+    )
+    permit_holder_signature_initials = models.CharField(
+        max_length=3,
+        verbose_name="Signature initials",
         blank=True,
     )
     created = models.DateTimeField(
@@ -131,7 +129,6 @@ class Permit(models.Model):
 class NonCommercialUsePermit(Permit):
     event_name = models.CharField(
         max_length=250,
-        help_text='The name of the event',
         blank=False
     )
     description = models.TextField(
@@ -143,22 +140,24 @@ class NonCommercialUsePermit(Permit):
     )
     start_date = models.DateTimeField(
         default=timezone.now,
-        help_text='Format: MM/DD/YYYY',
+        verbose_name='Start date and time',
+        help_text='Format: MM/DD/YYYY HH:MM',
         blank=False,
     )
     end_date = models.DateTimeField(
         default=timezone.now,
-        help_text='Format: MM/DD/YYYY',
+        verbose_name='End date and time',
+        help_text='Format: MM/DD/YYYY HH:MM',
         blank=False,
     )
     participant_number = models.IntegerField(
-        verbose_name='Number of Participants',
+        verbose_name='Number of participants',
         help_text='This is the number of people who will directly participate '
                   'in the event.',
         blank=False,
     )
     spectator_number = models.IntegerField(
-        verbose_name='Number of Spectators',
+        verbose_name='Number of spectators',
         help_text='If your event will have spectators (such as at a sporting '
                   'event), please note how many additional people will be '
                   'spectators',

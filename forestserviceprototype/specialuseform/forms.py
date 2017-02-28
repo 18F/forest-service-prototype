@@ -15,32 +15,35 @@ class NonCommercialUsePermitForm(BetterModelForm):
                     'applicant_address_2', 'applicant_city',
                     'applicant_state', 'applicant_zipcode', 'applicant_email',
                     'applicant_phone_daytime', 'applicant_phone_evening'],
-                'legend': 'Applicant Information',
+                'legend': 'Applicant information',
             }),
             ('event_details', {
                 'fields': [
                     'description', 'location', 'participant_number',
                     'spectator_number', 'start_date', 'end_date'],
-                'legend': 'Event Details',
+                'legend': 'Event details',
             }),
             ('primary_permit_holder', {
                 'fields': [
                     'permit_holder_name', 'permit_holder_address_1',
                     'permit_holder_address_2', 'permit_holder_city',
-                    'permit_holder_state', 'permit_holder_zipcode',
-                    'permit_holder_signature'],
-                'legend': 'Primary Permit Holder Information',
+                    'permit_holder_state', 'permit_holder_zipcode'],
+                'legend': 'Permit holders',
                 'classes': ['permit_holder_1_fieldset']
             }),
             ('secondary_permit_holder', {
                 'fields': [
                     'permit_holder_2_name', 'permit_holder_2_address_1',
                     'permit_holder_2_address_2', 'permit_holder_2_city',
-                    'permit_holder_2_state', 'permit_holder_2_zipcode',
-                    'permit_holder_2_signature'],
+                    'permit_holder_2_state', 'permit_holder_2_zipcode'],
                 'legend': 'Secondary Permit Holder Information',
                 'classes': ['permit_holder_fieldset', 'permit_hide']
             }),
+            ('signature', {
+                'fields': [
+                    'permit_holder_signature_initials'],
+                'legend': 'Signature'
+            })
         ]
         widgets = {
             'zipcode': forms.TextInput(attrs={
@@ -56,4 +59,34 @@ class NonCommercialUsePermitForm(BetterModelForm):
             'permit_holder_2_zipcode': forms.TextInput(attrs={
                 'class': 'usa-input-medium'
             }),
+        },
+        labels = {
+            'event_name': 'Name of group or event',
+            'applicant_address_1' : 'Address of group or contact',
+            'applicant_address_2' : 'Address (line 2)',
+            'applicant_city' : 'City',
+            'applicant_state' : 'State',
+            'applicant_zipcode' : 'ZIP',
+            'applicant_email' : 'Email address',
+            'applicant_phone_daytime' : 'Phone (day)',
+            'applicant_phone_evening' : 'Phone (evening)',
+            'description' : 'Description of proposed activity',
+            'location' : 'Location and description of National Forest system lands and facilities applicant would like to use',
+            'participant_number' : 'Estimated number of participants',
+            'spectator_number' : 'Estimated number of spectators',
+            'start_date' : 'Start date and time',
+            'end_date' : 'End date and time',
+            'permit_holder_name' : 'Permit holder name',
+            'permit_holder_address_1' : 'Address 1',
+            'permit_holder_address_2' : 'Address 2',
+            'permit_holder_city' : 'City',
+            'permit_holder_state' : 'State',
+            'permit_holder_zipcode' : 'ZIP',
+            'permit_holder_2_name': 'Permit holder name',
+            'permit_holder_2_address_1' : 'Address 1',
+            'permit_holder_2_address_2' : 'Address 2',
+            'permit_holder_2_city' : 'City',
+            'permit_holder_2_state' : 'State',
+            'permit_holder_2_zipcode' : 'ZIP',
+            'permit_holder_signature_initials' : 'Type your initials here as a signature on your application'
         }
