@@ -15,13 +15,13 @@ class NonCommercialUsePermitForm(BetterModelForm):
                     'applicant_address_2', 'applicant_city',
                     'applicant_state', 'applicant_zipcode', 'applicant_email',
                     'applicant_phone_daytime', 'applicant_phone_evening'],
-                'legend': 'Applicant Information',
+                'legend': 'Applicant information',
             }),
             ('event_details', {
                 'fields': [
                     'description', 'location', 'participant_number',
                     'spectator_number', 'start_date', 'end_date'],
-                'legend': 'Event Details',
+                'legend': 'Event details',
             }),
             ('primary_permit_holder', {
                 'fields': [
@@ -29,7 +29,7 @@ class NonCommercialUsePermitForm(BetterModelForm):
                     'permit_holder_address_2', 'permit_holder_city',
                     'permit_holder_state', 'permit_holder_zipcode',
                     'permit_holder_signature'],
-                'legend': 'Primary Permit Holder Information',
+                'legend': 'Permit holders',
                 'classes': ['permit_holder_1_fieldset']
             }),
             ('secondary_permit_holder', {
