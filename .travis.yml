@@ -3,10 +3,6 @@ python:
 - '3.5'
 addons:
   postgresql: '9.3'
-env:
-  global:
-  - CF_USERNAME=c9a300d8-2610-424b-94a0-14e321420176
-  - secure: CDJL31q352WfC760Z2TxqUcJNoRcLaJPQWgWQxRnR5rMx7rNkNmaiW6ZTk2wqvj5zLDkmaC69AAegxhwDP2jpErBVkS7qWHp2rOjS7+R7O2NUGDqayevgYMELFufcNEX8nW868MwT7c17b1LdHdmip2yjoZLfoDa0x5wbinsRSIlyiivn2uMOTsv7Xs56u+oaY+DJeQptdSU6c3ygy3AMRn4WYI6t4sVl/PelEenHsT9X/CkHJnAfw0YE5SiPkiKWGQDSfRonZ8nBFgaLIXnuTpzMm/shvAfpDpUedkxj+B/y+YCgJUjqsXv9WPw0yjzwtBHMk/+DfPgnlnhpHmWoiKIeKwKT57o0c0GDpz3gLKreZ5DX4/BaPUib6FIdv916DEp1Jo5BSnfSe09KGD2Cjc4JpFDt8z+2e3XdkjDFV0uT9GGYOi4JP4xtVNy0izCQyRicYdfHeYY2dw5si1IiNfDroQbuZsSHABAX7te1Nt6VeudNm8EmkQMylOoiImn3DmDS9GTgJ+p+A2/jv8F/4nZIkSnoYNjKZxYyXCCfZsQLsosdeHPEoxkrv+CvFWENCDsFLTLNR6xSrd4TvSbFFjUmMb9uK5I3iDAWLu3UR/xfkU9KgCzTVySrjOBAvBDRtxDix7Dq5YSTu5wyFKzr4jksyhEuk6swF2wiWtGZE4=
 before_script:
 - createdb forest-service-prototype
 - cd forestserviceprototype && ./manage.py collectstatic --noinput -v 0
