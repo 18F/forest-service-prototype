@@ -1,0 +1,18 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=forest-service-prototype
+      - POSTGRES_
+  web:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - PORT=8000
+      - DATABASE_URL=postgres://postgres@db/forest-service-prototype
+    entrypoint:
+      - ./start.sh
+    ports:
+      - 8000:8000
