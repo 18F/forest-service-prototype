@@ -39,7 +39,7 @@ cd forestserviceprototype
 
 The app should now be running at http://localhost:8000.
 
-To generate some data from for development:
+To generate some data for development:
 
 ```
 ./manage.py create_permits
